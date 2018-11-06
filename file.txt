@@ -1,0 +1,52 @@
+The module firmware tool is cluttered and is hard to fallow To clean things up and add some more functionality.
+
+There are two methods to update firmware
+1. Verify the firmware before uploading it
+2. Just upload the firmware with no verification
+
+Maybe before doing this I should fix the firmware issue?? But i need to add the ability to write just the firmware?
+
+```
+A. Utility has wrong SAF
+A.1 Use utility to write SAF
+A.1.A Communication Fails with -444 during gI2CBus.GetPUC()
+A.1.A.A This often occurs if mmpServer is trying to rediscover the module
+A.1.A.A.1 Attempt to Upload with mmpServer not running
+A.1.A.A.1.A SAF is still not modified on regular upload
+A.1.A.A.1.B Close inspection showed I was attempting to upload to slot 0 FAIL!!
+A.1.A.A.2 Try again with slot set to 4
+A.1.A.A.2.A Success!!! now to debug
+A.2.B Upload still fails to change SAF. Could we have a corrupted device again?
+A.2.B.1 Read firmware of Bad Module, A good module, Another different good module
+A.2.B.1.A OMRIS vs IDCS - Bootloader is the same
+A.2.B.1.B OMRIS SAF is corrupted yet i2cdump appears fine???
+A.2.B.1.C ODCSRCHCS is corrupted too
+A.2.B.1.D Bootloader appears fine in all firmware;
+A.2.B.2 Change SAF on Bad Module, A good module, Another different good module
+A.2.B.2.A ODCSRCHCS module was switched to CSERI module.. although i told it ODCSRCHCS
+A.2.B.2.B IDCS 24 module was switched to CSERI module.. although i told it IDCS 24
+A.2.B.2.1 Check that the utility is using correct module firmware
+A.2.B.2.1.A I Had debug on in the firmware witch defaults to CSERI dahhhhhh
+A.2.B.2.1.B Firmware did faile to upload the first time
+A.2.B.2.1.1 Upload firmware with debug feature turned off
+A.2.B.2.1.A Success!!! firmware had correct type
+
+B. Relays click with latest firmware
+B.1 Turn off weak pull ups
+B.1.A Realys do not click
+B.1.B When pull ups are enabled relays click. Issues is pull ups...
+B.1.C Why did I use WPU?
+B.1.C.A To read LED state of FTDI chips...
+B.1.C.B Because of this undesired behavior it might be better to turn WPU later
+B.2 Enable WPU only on serial modules
+B.2.A OMRIS modules work fine now
+B.2.B Enabling weak pull ups does not work LED's stay on
+B.2.1 Set WPU twice to see if your only able to set them once i code
+B.2.1.A It worked suggetsing that WPU are not being set when serial module is detected
+B.2.1.1 Move WPU code around and identify any post assignment requirements (Look at datasheet?)
+B.2.1.1.A Nothing went wrong, I must have uploaded the incorrect FW when I saw an issue
+B.2.1.1.A.A Sometimes when I formget to compile the MPLAB code and it does not get copied
+
+
+
+```
