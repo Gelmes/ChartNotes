@@ -98,7 +98,7 @@ $( document ).ready(function() {
     $("#editor").on('keydown', null, function(e) { 
 		var keyCode = e.keyCode || e.which; 
 		// Tab 9
-		// Enter 13
+		// Enter 13 
 		// Back 8
 		// Shift 16
 		// Shift Tab? mest keep track of previous key press
