@@ -85,10 +85,10 @@ $( document ).ready(function() {
 				//console.log(getPrependix(contents, curStart));
 				//console.log(getPrependixFromLine(contents, lineNumber));
 				//var newContents = handleTab(contents, lineNumber);
-				tc.setContent(newContents);
-				if(contents.length < newContents.length){
-					tc.setPosition(curStart + 3,curStart + 3); // + 3 to include all three aditional characters
-				}
+				//tc.setContent(newContents);
+				//if(contents.length < newContents.length){
+				//	tc.setPosition(curStart + 3,curStart + 3); // + 3 to include all three aditional characters
+				//}
 				
 				//tc.setLineNumber(lineNumber);
 			}
