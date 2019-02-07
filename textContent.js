@@ -5,7 +5,6 @@ module.exports = class textContent {
     constructor(contentID){
         this.contentID = contentID;
         this.content = $("#" + this.contentID);
-        alert("Reading " + this.contentID);
     }
     
     // PRIVATE! Meant for use within the textContent class only

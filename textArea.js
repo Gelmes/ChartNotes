@@ -8,6 +8,7 @@ Options
    └─ Avocado
 */
 var textContent = require('./textContent');
+var textGraph = require('./textGraph');
 
 var treeSymbols = ["└","─", "│","├", " "];		// determine how to draw the tree view
 //var treeSymbols = ["1","2", "3","4", "5"];		// determine how to draw the tree view
@@ -59,6 +60,10 @@ $( document ).ready(function() {
 	
 	const tc = new textContent('editor');
 	tc.getContent();
+
+	const tg = new textGraph(tc);
+	tg.buildGraph();
+	console.log(tg.getGraph());
 
     $("#editor").on('keydown', null, function(e) { 
 		var keyCode = e.keyCode || e.which; 
