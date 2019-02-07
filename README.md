@@ -1,6 +1,10 @@
 # ChartNotes
 A utility for creating simple notepad like notes that generate a chart to help you map out your thoughts.
 
+This utility is made with electron so it won't work unless you have all the dependencies too. I have not commited the node modules yet since they change every time I run a test but that should not matter. Once you have all the dependencies you can run with
+
+npm start
+
 ##
 * instead of doing complicated text manipulation I count the number of tabs to generate an internal tree
 
