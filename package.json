@@ -1,7 +1,7 @@
 {
-  "name": "FirstApp",
-  "version": "1.0.0",
-  "description": "First App",
+  "name": "firmwaretool",
+  "version": "0.0.0",
+  "description": "Easaly read and write firmware to Opto22 Groov Epic somple modules",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
@@ -9,7 +9,11 @@
   "author": "Marco Rubio",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^3.0.7"
+    "electron": "^5.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  }
 }
