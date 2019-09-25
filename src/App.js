@@ -44,6 +44,10 @@ class Board extends React.Component{
     }
 }
 
+class textEditor extends React.Compontent{
+
+}
+
 class Game extends React.Component{
   constructor(props){
     super(props);
