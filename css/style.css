@@ -1,0 +1,7 @@
+.textrow{
+    display:inline-block;
+    width: 100%;
+    border-radius: 3px;
+    background: #ddd;
+    height: 1.2em;
+}

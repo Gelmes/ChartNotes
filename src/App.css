@@ -31,3 +31,20 @@
     transform: rotate(360deg);
   }
 }
+
+.textEditor{
+  border: solid 1px #000;
+  border-radius: 3px;
+  min-height: 10em;
+  margin: 1em;
+}
+
+.textRow {
+  display: inline-block;
+  background: #eee;
+  border: solid 1px #ddd;
+  border-radius: 3px;
+  min-height: 1em;
+  width: 100%;
+  text-align: left;
+}

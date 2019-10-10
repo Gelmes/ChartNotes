@@ -6,6 +6,9 @@ Description
 Work Breakdown 
     (This work breakdown would have been handy to have been done in ChartNotes)
     Text Editor
+        Basic layout
+            TextArea (Div) DONE
+            TextRow(Div) DONE
         Keyboard inputs to consider
             Space
             Backspace
@@ -14,6 +17,14 @@ Work Breakdown
             Left Right
             Tab
             Escape
+                Create new div element below
+                Move cursor to new element for editing
+                maintain tabification
+                alternate color pattern?
+            ctrl-s
+            ctrl-a
+            ctrl-c
+            ctrl-p
         Shortcuts
         Textbox or Divs?
             Divs

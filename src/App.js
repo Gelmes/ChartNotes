@@ -44,8 +44,95 @@ class Board extends React.Component{
     }
 }
 
-class textEditor extends React.Compontent{
 
+class TextRow extends React.Component{
+  constructor(props) {
+    super(props);
+    this.textInput = React.createRef();
+  }
+
+  onKeyPressed(e) {
+    console.log(e.key);
+  }
+  
+  componentDidMount() {
+    this.textInput.current.focus();
+  }
+
+  render(){
+    return(
+        <div 
+          id={this.props.id} 
+          contentEditable="true" 
+          className="textRow"
+          onKeyDown={this.props.onKey}
+          ref={this.textInput}
+          >
+          {this.props.content} 
+        </div >
+    )
+  }
+}
+
+class TextEditor extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      rows: [{
+        id:0, content:"Some Name Text"
+      }],
+    }
+    this.handleKey = this.handleKey.bind(this);
+  }
+
+  handleKey(event){
+    //console.log(event.key);
+    if(event.key == "Enter"){
+      event.preventDefault();
+      const rows = this.state.rows;
+      rows.push({id:rows.length, content:""});
+      rows[event.target.id].content = event.target.textContent;
+      this.setState({rows: rows});
+    }
+    else if(event.key == "ArrowUp"){
+      event.preventDefault();
+      try { 
+        let row = document.getElementById(parseInt(event.target.id) - 1);
+        row.focus();
+        this.setState(
+          this.state,
+            ()=> {          
+              row.selectionStart = row.selectionEnd = row.textContent.length;
+            }
+          )
+          //https://stackoverflow.com/questions/38385936/change-the-cursor-position-in-a-textarea-with-react/38386230
+        // console.log("one: " + event.target.selectionStart);
+        // //row.setSelectionRange(2,event.target.textContent.length);
+        // console.log("two: " + event.target.selectionEnd);
+        // console.log("three: " + event.target.textContent.length);
+        // //row.setSelectionRange(2,event.target.textContent.length);
+      }
+      catch(error){}
+    }
+    else if(event.key == "ArrowDown"){
+      event.preventDefault();
+      try { document.getElementById(parseInt(event.target.id) + 1).focus(); }
+      catch(error){}
+    }
+    return;
+  }
+
+  render(){
+    return(
+      <div className="textEditor">
+        {
+          this.state.rows.map((row) =>
+            <TextRow id={row.id} content={row.content} onKey={(e) => this.handleKey(e)} />
+          )
+        }
+      </div>
+    )
+  }
 }
 
 class Game extends React.Component{
@@ -128,6 +215,7 @@ function App() {
       </header>
       */}
       <Game />
+      <TextEditor />
     </div>
   );
 }
