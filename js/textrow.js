@@ -2,7 +2,8 @@ class TextRow{
     constructor(options) {
       const defaults = {
         parent: null,
-        content: null
+        content: null,
+        index: null
       };
       const populated = Object.assign(defaults, options);
       for (const key in populated) {
@@ -10,7 +11,7 @@ class TextRow{
           this[key] = populated[key];
         }
       }
-      if (this.index){ this.addRowAt(this.index); } 
+      if (this.index != null){ this.addRowAt(this.index); } 
       else { this.parent.content.html(this.getHtml()); }
     }
 
@@ -24,10 +25,15 @@ class TextRow{
 
   addRowAt = function(index){
       if(index === 0) {
-          this.parent.content.prepend(this.getHtml());  
+          this.content = this.parent.content.prepend(this.getHtml());  
       }  else {
-          $(this.parent.element + " > :nth-child(" + (index) + ")").after(this.getHtml());
-      }
+        //this.content = $(this.parent.element + " > :nth-child(" + (index) + ")").after(this.getHtml() + index);
+        this.content = $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div class='textrow' contenteditable='true'>row " + index + "</div>");
+      }``
+  }
+
+  focus = function(){
+    this.content.focus();
   }
 }
 

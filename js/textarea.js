@@ -22,6 +22,7 @@ class TextArea{
   addRowAt = function(index){
       this.targetRowIndex = index + 1;
       this.rows.splice(index, 0, new TextRow({parent:this, index:index}));
+      this.rows[this.rows.length-1].focus();
   }
 
 
