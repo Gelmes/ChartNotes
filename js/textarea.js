@@ -14,15 +14,49 @@ class TextArea{
   }
 
   addRow = function(){
-    //   this.rows.push(new TextRow({parent:this}));      
-    //   this.targetRowIndex = this.rows.length - 1;
-      this.addRowAt(this.targetRowIndex);
+      this.addRowAt(this.getTargetRow());
   }
 
   addRowAt = function(index){
-      this.targetRowIndex = index + 1;
-      this.rows.splice(index, 0, new TextRow({parent:this, index:index}));
-      this.rows[this.rows.length-1].focus();
+    this.setTargetRow(this.getTargetRow() + 1);
+      const tr = new TextRow({parent:this, index:index});
+      this.rows.splice(index, 0, tr);
+      tr.focus();
+  }
+
+  setTargetRow = function(value){
+    if(value < this.rows.length && value >= 0){
+      console.log("Setting length: " + value);
+      this.targetRowIndex = value;
+    }
+  }
+
+  getTargetRow = function(value){
+    return this.targetRowIndex;
+  }
+
+  goDown = function(){
+    this.setTargetRow(this.getTargetRow() + 1);
+    try{
+      console.log("try: " + this.getTargetRow());
+      this.rows[this.getTargetRow()].focus();
+      console.log("try: " + this.getTargetRow());
+    } catch (err){
+      console.log("catch: " + this.getTargetRow());
+    this.setTargetRow(this.getTargetRow() - 1);
+      console.log("catch: " + this.getTargetRow());
+    }
+    console.log("goDown: " + this.getTargetRow());
+  }
+
+  goUp = function(){
+    this.setTargetRow(this.getTargetRow() - 1);
+    try{
+      this.rows[this.getTargetRow()].focus();
+    } catch (err){
+    this.setTargetRow(this.getTargetRow() + 1);
+  }
+    console.log("goUp  : " + this.getTargetRow());
   }
 
 

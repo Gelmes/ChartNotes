@@ -25,10 +25,11 @@ class TextRow{
 
   addRowAt = function(index){
       if(index === 0) {
-          this.content = this.parent.content.prepend(this.getHtml());  
+        this.parent.content.prepend(this.getHtml());  
+        this.content =  $(this.parent.element + " :first-child");
       }  else {
-        //this.content = $(this.parent.element + " > :nth-child(" + (index) + ")").after(this.getHtml() + index);
-        this.content = $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div class='textrow' contenteditable='true'>row " + index + "</div>");
+        $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div class='textrow' contenteditable='true'>row " + index + "</div>");
+        this.content =  $(this.parent.element + " > :nth-child(" + (index+1) + ")");
       }``
   }
 

@@ -7,14 +7,23 @@ class Shortcuts{
     handleKeyDown(event){
         console.log("Key: " + event.key);
         switch(event.key){
-            case "Enter": event.preventDefault(); this.handleEnter(); break;
+            case "Enter"    : event.preventDefault(); this.handleEnter(); break;
+            case "ArrowDown": event.preventDefault(); this.handleDown (); break;
+            case "ArrowUp"  : event.preventDefault(); this.handleUp   (); break;
             default: console.log("Unhandled Key");
         }
     }
     
     handleEnter = function(){
-        console.log("Handle Enter");
         this.texbox.addRow();
+    }
+    
+    handleDown = function(){
+        this.texbox.goDown();
+    }
+    
+    handleUp   = function(){
+        this.texbox.goUp();
     }
 
   }
