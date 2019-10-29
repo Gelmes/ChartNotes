@@ -15,7 +15,7 @@ class Shortcuts{
     }
     
     handleEnter(){
-        this.texbox.addRow();
+        this.texbox.appendRow();
     }
     
     handleDown(){

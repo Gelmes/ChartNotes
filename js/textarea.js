@@ -18,11 +18,16 @@ class TextArea{
       this.addRowAt(this.getTargetRow());
   }
 
+  appendRow(){
+      console.log("Add Row: " + this.getTargetRow());
+      let targetRow = this.getTargetRow() + 1;
+      this.addRowAt(targetRow);
+  }  
+
   addRowAt(index){
-    index = this.getTargetRow();
     const tr = new TextRow({parent:this, index:index});
     this.rows.splice(index, 0, tr);
-    this.setTargetRow(index + 1);
+    this.setTargetRow(index);
     tr.focus();
   }
 
