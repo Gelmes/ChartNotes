@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "env DEBUG_MODE=1 jest"
+    "test": "env DEBUG_MODE=1 jest --collect-coverage"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +15,7 @@
     "jest-electron": "^0.1.7"
   },
   "dependencies": {
-    "hotkeys-js": "^3.7.2",
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "mousetrap": "^1.6.3"
   }
 }

@@ -18,7 +18,6 @@ describe('Test Row Creation', () => {
         document.documentElement.innerHTML = html.toString();
         ta = new TextArea(".TextArea");
         sh = new Shortcuts(ta);    
-        const {ta, sh} = require("../index.js");
         tr = ta.rows[ta.getTargetRow()];  // Should be targeting the second row
     });
 
