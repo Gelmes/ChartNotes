@@ -1,5 +1,3 @@
-import hotkeys from 'hotkeys-js';
-
 class Shortcuts{
     constructor(texbox) {
       this.texbox = texbox;
@@ -15,7 +13,7 @@ class Shortcuts{
             default: console.log("Unhandled Key");
         }
     }
-    
+
     handleEnter(){
         this.texbox.appendRow();
     }

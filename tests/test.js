@@ -1,18 +1,28 @@
 
-  
+// Taken from: https://dev.to/snowleo208/things-i-learned-after-writing-tests-for-js-and-html-page-4lja
+const fs = require('fs');
+const path = require('path');
+const html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8');
+
+jest.dontMock('fs');
+
 const TextArea = require("../js/textarea.js")
 const TextRow = require("../js/textrow.js")
 const Shortcuts = require("../js/shortcuts.js")
 var $ = require("jquery");
 
-  
-let ta = new TextArea(".TextArea");
-let sh = new Shortcuts(ta);    
-let tr = ta.rows[0];
-
 // This test must run before other test for now to set up the TextArea object
-describe('Test Row Creation', () => {    
-    test('Create Rows', () => {
+describe('Test Row Creation', () => {
+    
+    beforeEach(() => {
+        document.documentElement.innerHTML = html.toString();
+        ta = new TextArea(".TextArea");
+        sh = new Shortcuts(ta);    
+        const {ta, sh} = require("../index.js");
+        tr = ta.rows[ta.getTargetRow()];  // Should be targeting the second row
+    });
+
+    test('Create Rows', () => {        
         expect(ta.rows.length).toBe(1);
         expect(ta.getTargetRow()).toBe(0);
         ta.appendRow();
@@ -23,7 +33,17 @@ describe('Test Row Creation', () => {
         expect(ta.getTargetRow()).toBe(2);
     });
     
-    test('row assignment', () => {        
+    test('set out of range row', () => {        
+        ta.setTargetRow(0);
+        expect(ta.getTargetRow()).toBe(0);
+        ta.setTargetRow(1);
+        expect(ta.getTargetRow()).toBe(0);
+    });
+    
+    test('row assignment', () => {      
+        ta.appendRow();
+        ta.appendRow();
+        ta.appendRow();  
         ta.setTargetRow(0);
         expect(ta.getTargetRow()).toBe(0);
         ta.setTargetRow(1);
@@ -35,12 +55,20 @@ describe('Test Row Creation', () => {
 
 
 describe('TAB Shortcut', () => {
+
     beforeEach(() => {
-        ta = new TextArea(".TextArea");   // This is our main object
-        sh = new Shortcuts(ta);           // Creates the shortcuts object
+        document.documentElement.innerHTML = html.toString();
+        ta = new TextArea(".TextArea");
+        sh = new Shortcuts(ta);    
         ta.appendRow();                       // Adds the row we will be working with
         tr = ta.rows[ta.getTargetRow()];  // Should be targeting the second row
     });
+
+    afterEach(() => {
+        // restore the original func after test
+        jest.resetModules();
+    });
+
 
     test('Rows have hirarchy', () => {
         expect(tr.level).toBeDefined();
@@ -66,6 +94,6 @@ describe('TAB Shortcut', () => {
         expect(tr.level).toBe(1);
     });
 
-    
+
 
 });

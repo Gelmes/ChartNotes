@@ -31,7 +31,7 @@ class TextArea{
   }
 
   setTargetRow(value){
-    if(value <= this.rows.length && value >= 0){
+    if(value < this.rows.length && value >= 0){
       //console.log("Setting length: " + value);
       this.targetRowIndex = value;
     }
