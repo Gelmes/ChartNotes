@@ -15,6 +15,7 @@
     "jest-electron": "^0.1.7"
   },
   "dependencies": {
+    "hotkeys-js": "^3.7.2",
     "jquery": "^3.4.1"
   }
 }

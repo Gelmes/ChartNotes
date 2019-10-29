@@ -1,3 +1,5 @@
+import hotkeys from 'hotkeys-js';
+
 class Shortcuts{
     constructor(texbox) {
       this.texbox = texbox;
@@ -24,6 +26,10 @@ class Shortcuts{
     
     handleUp(){
         this.texbox.goUp();
+    }
+
+    handleTab(){
+        this.texbox.increaseLevel();
     }
 
   }

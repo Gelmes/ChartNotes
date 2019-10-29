@@ -1,4 +1,5 @@
 const TextRow = require("./textrow.js");
+var $ = require("jquery");
 
 class TextArea{
   constructor(element) {
@@ -14,12 +15,10 @@ class TextArea{
   }
 
   addRow(){
-      console.log("Add Row: " + this.getTargetRow());
       this.addRowAt(this.getTargetRow());
   }
 
   appendRow(){
-      console.log("Add Row: " + this.getTargetRow());
       let targetRow = this.getTargetRow() + 1;
       this.addRowAt(targetRow);
   }  
@@ -32,8 +31,6 @@ class TextArea{
   }
 
   setTargetRow(value){
-    console.log("Setting length: " + value);
-    console.log("row     length: " + this.rows.length);
     if(value <= this.rows.length && value >= 0){
       //console.log("Setting length: " + value);
       this.targetRowIndex = value;
@@ -44,18 +41,23 @@ class TextArea{
     return this.targetRowIndex;
   }
 
+  increaseLevel(){
+    let targetRow = this.getTargetRow();
+    if(targetRow != 0){
+      // Check that the level of the current row does not increase more then one of the prev row
+      if(this.rows[targetRow].getLevel() <= this.rows[targetRow-1].getLevel()){
+        this.rows[targetRow].increaseLevel();
+      }
+    }
+  }
+
   goDown(){
     this.setTargetRow(this.getTargetRow() + 1);
     try{
-      console.log("try: " + this.getTargetRow());
       this.rows[this.getTargetRow()].focus();
-      console.log("try: " + this.getTargetRow());
     } catch (err){
-      console.log("catch: " + this.getTargetRow());
     this.setTargetRow(this.getTargetRow() - 1);
-      console.log("catch: " + this.getTargetRow());
     }
-    console.log("goDown: " + this.getTargetRow());
   }
 
   goUp(){
@@ -63,9 +65,8 @@ class TextArea{
     try{
       this.rows[this.getTargetRow()].focus();
     } catch (err){
-    this.setTargetRow(this.getTargetRow() + 1);
-  }
-    console.log("goUp  : " + this.getTargetRow());
+      this.setTargetRow(this.getTargetRow() + 1);
+    }
   }
 
 
