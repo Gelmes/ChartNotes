@@ -9,33 +9,37 @@ class TextArea{
     this.addRow();
   }
 
-  setContent = function (str){
+  setContent(str){
     this.content.html(str);
   }
 
-  addRow = function(){
+  addRow(){
+      console.log("Add Row: " + this.getTargetRow());
       this.addRowAt(this.getTargetRow());
   }
 
-  addRowAt = function(index){
-    this.setTargetRow(this.getTargetRow() + 1);
-      const tr = new TextRow({parent:this, index:index});
-      this.rows.splice(index, 0, tr);
-      tr.focus();
+  addRowAt(index){
+    index = this.getTargetRow();
+    const tr = new TextRow({parent:this, index:index});
+    this.rows.splice(index, 0, tr);
+    this.setTargetRow(index + 1);
+    tr.focus();
   }
 
-  setTargetRow = function(value){
-    if(value < this.rows.length && value >= 0){
-      console.log("Setting length: " + value);
+  setTargetRow(value){
+    console.log("Setting length: " + value);
+    console.log("row     length: " + this.rows.length);
+    if(value <= this.rows.length && value >= 0){
+      //console.log("Setting length: " + value);
       this.targetRowIndex = value;
     }
   }
 
-  getTargetRow = function(value){
+  getTargetRow(value){
     return this.targetRowIndex;
   }
 
-  goDown = function(){
+  goDown(){
     this.setTargetRow(this.getTargetRow() + 1);
     try{
       console.log("try: " + this.getTargetRow());
@@ -49,7 +53,7 @@ class TextArea{
     console.log("goDown: " + this.getTargetRow());
   }
 
-  goUp = function(){
+  goUp(){
     this.setTargetRow(this.getTargetRow() - 1);
     try{
       this.rows[this.getTargetRow()].focus();

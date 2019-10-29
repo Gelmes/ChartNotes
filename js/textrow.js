@@ -15,15 +15,15 @@ class TextRow{
       else { this.parent.content.html(this.getHtml()); }
     }
 
-  setContent = function (str){
+  setContent (str){
     this.content.html(str);
   }
 
-  getHtml = function(){
+  getHtml(){
       return "<div class='textrow' contenteditable='true'>row</div>";
   }
 
-  addRowAt = function(index){
+  addRowAt(index){
       if(index === 0) {
         this.parent.content.prepend(this.getHtml());  
         this.content =  $(this.parent.element + " :first-child");
@@ -33,7 +33,7 @@ class TextRow{
       }``
   }
 
-  focus = function(){
+  focus(){
     this.content.focus();
   }
 }

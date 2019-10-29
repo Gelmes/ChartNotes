@@ -14,15 +14,15 @@ class Shortcuts{
         }
     }
     
-    handleEnter = function(){
+    handleEnter(){
         this.texbox.addRow();
     }
     
-    handleDown = function(){
+    handleDown(){
         this.texbox.goDown();
     }
     
-    handleUp   = function(){
+    handleUp(){
         this.texbox.goUp();
     }
 
