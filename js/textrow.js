@@ -35,7 +35,7 @@ class TextRow{
   }
 
   getHtml(){
-      return "<div class='textrow' contenteditable='true'>row</div>";
+      return "<div class='textrow mousetrap' contenteditable='true'>row</div>";
   }
 
   addRowAt(index){
