@@ -93,6 +93,22 @@ describe('TAB Shortcut', () => {
         expect(tr.level).toBe(1);
     });
 
+    test('Press Enter key', () =>{        
+
+        
+        var e = document.createEvent('HTMLEvents');
+        e.initEvent(type, false, true);
+        
+        var e = $.Event( "keydown", { keyCode: 65 } );
+        $('.textrow').trigger(e);
+        $('.textrow').trigger(e);
+        $('.textrow').trigger(e);
+        console.log(document.documentElement.innerHTML);
+        expect(ta.rows.length).toBe(3);
+        $('html').trigger(e);
+        expect(ta.rows.length).toBe(4);
+    });
+
 
 
 });
