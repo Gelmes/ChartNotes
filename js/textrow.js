@@ -10,7 +10,8 @@ class TextRow{
       const defaults = {
         parent: null,
         content: null,
-        index: null
+        index: null,
+        id: 0
       };
 
       // Copies the passed values to the default value list
@@ -25,8 +26,9 @@ class TextRow{
 
       // Adds the rows html code to the parents html
       if (this.index != null){ this.addRowAt(this.index); } 
-      else { this.parent.content.html(this.getHtml()); }
+      else { this.parent.content.html(this.genRowHtml(this.id)); }
 
+      this.content.focusin(() => {this.setAsTarget();});
 
     }
 
@@ -34,18 +36,25 @@ class TextRow{
     this.content.html(str);
   }
 
-  getHtml(){
-      return "<div class='textrow mousetrap' contenteditable='true'>row</div>";
+  setAsTarget(){
+    var index = $(".textrow").index(this.content);
+    this.parent.setTargetRow(index);
+
+    return index;
+  }
+
+  genRowHtml(id){
+    return "<div id='" + id + "' class='textrow mousetrap' contenteditable='true'>row</div>";
   }
 
   addRowAt(index){
       if(index === 0) {
-        this.parent.content.prepend(this.getHtml());  
+        this.parent.content.prepend(this.genRowHtml(this.id));  
         this.content =  $(this.parent.element + " :first-child");
       }  else {
-        $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div class='textrow mousetrap' contenteditable='true'>row " + index + "</div>");
+        $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div id='" + this.id + "' class='textrow mousetrap' contenteditable='true'>row " + this.id + "</div>");
         this.content =  $(this.parent.element + " > :nth-child(" + (index+1) + ")");
-      }``
+      }
   }
 
   increaseLevel(){

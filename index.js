@@ -5,15 +5,6 @@ var $ = require("jquery");
 var ta = new TextArea(".TextArea");
 var sh = new Shortcuts(ta);
 
-const Mousetrap = require("mousetrap");
-
-Mousetrap.bind('enter', function(e) {
-    event.preventDefault();
-    console.log("Key down");
-    ta.appendRow();
-});
-
-
 // function setup(){
 //     console.log("HTML HAS LOADED!!!");
 //     ta = new TextArea(".TextArea");

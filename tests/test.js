@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8');
+const shallow = require ('enzyme');
 
 jest.dontMock('fs');
 
@@ -51,7 +52,9 @@ describe('Test Row Creation', () => {
         expect(ta.getTargetRow()).toBe(2);
     });
 });
-
+function simulateKeyPress(character) {
+    $.event.trigger({ type : 'keypress', which : character.charCodeAt(0) });
+  }
 
 describe('TAB Shortcut', () => {
 
@@ -95,18 +98,6 @@ describe('TAB Shortcut', () => {
 
     test('Press Enter key', () =>{        
 
-        
-        var e = document.createEvent('HTMLEvents');
-        e.initEvent(type, false, true);
-        
-        var e = $.Event( "keydown", { keyCode: 65 } );
-        $('.textrow').trigger(e);
-        $('.textrow').trigger(e);
-        $('.textrow').trigger(e);
-        console.log(document.documentElement.innerHTML);
-        expect(ta.rows.length).toBe(3);
-        $('html').trigger(e);
-        expect(ta.rows.length).toBe(4);
     });
 
 

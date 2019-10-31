@@ -7,6 +7,7 @@ class TextArea{
     this.content = $(element);
     this.rows = [];
     this.targetRowIndex = 0;
+    this.rowCounter = 0; // Increments every time a new row gets added
     this.addRow();
   }
 
@@ -24,7 +25,8 @@ class TextArea{
   }  
 
   addRowAt(index){
-    const tr = new TextRow({parent:this, index:index});
+    const tr = new TextRow({parent:this, index:index, id:this.rowCounter});
+    this.rowCounter += 1;
     this.rows.splice(index, 0, tr);
     this.setTargetRow(index);
     tr.focus();
