@@ -6,12 +6,17 @@ class Shortcuts{
         //this.texbox.content.keydown((event) =>this.handleKeyDown(event));
         this.shortcuts = {
             'newRow' : 'enter',
-            'downRow' : 'ArrowDown',
-            'upRow' : 'ArrowUp'
+            'downRow' : 'down',
+            'upRow' : 'up',
+            'incLevel' : 'tab'
         }
         this.setKey_newRow(this.shortcuts['newRow']);
+        this.setKey_downRow(this.shortcuts['downRow']);
+        this.setKey_upRow(this.shortcuts['upRow']);
+        this.setKey_incLevel(this.shortcuts['incLevel']);
     }
     
+    // // Depricated code Likely won't use again 
     // handleKeyDown(event){
     //     console.log("Key: " + event.key);
     //     switch(event.key){
@@ -21,39 +26,53 @@ class Shortcuts{
     //         default: console.log("Unhandled Key");
     //     }
     // }
+    // handleEnter(){
+    //     this.texbox.appendRow();
+    // }
+    
+    // handleDown(){
+    //     this.texbox.goDown();
+    // }
+    
+    // handleUp(){
+    //     this.texbox.goUp();
+    // }
+
+    // handleTab(){
+    //     this.texbox.increaseLevel();
+    // }
+
     setKey_newRow(key){
         Mousetrap.unbind(this.shortcuts['newRow']);
         this.shortcuts['newRow'] = key;
         Mousetrap.bind(key, function(e) {
             event.preventDefault();
-            console.log(key);
             ta.appendRow();
         });
-
     }
-
-    handleEnter(){
-        
-
-        Mousetrap.bind('enter', function(e) {
+    setKey_downRow(key){
+        Mousetrap.unbind(this.shortcuts['downRow']);
+        this.shortcuts['downRow'] = key;
+        Mousetrap.bind(key, function(e) {
             event.preventDefault();
-            console.log("Key down");
-            ta.appendRow();
+            ta.goDown();
         });
-
-        this.texbox.appendRow();
     }
-    
-    handleDown(){
-        this.texbox.goDown();
+    setKey_upRow(key){
+        Mousetrap.unbind(this.shortcuts['upRow']);
+        this.shortcuts['upRow'] = key;
+        Mousetrap.bind(key, function(e) {
+            event.preventDefault();
+            ta.goUp();
+        });
     }
-    
-    handleUp(){
-        this.texbox.goUp();
-    }
-
-    handleTab(){
-        this.texbox.increaseLevel();
+    setKey_incLevel(key){
+        Mousetrap.unbind(this.shortcuts['incLevel']);
+        this.shortcuts['incLevel'] = key;
+        Mousetrap.bind(key, function(e) {
+            event.preventDefault();
+            ta.increaseLevel();
+        });
     }
 
   }
