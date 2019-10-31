@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "env DEBUG_MODE=1 jest --collect-coverage"
+    "test": "env DEBUG_MODE=1 jest --watch --collect-coverage"
   },
   "author": "",
   "license": "ISC",

@@ -5,3 +5,9 @@
     background: #ddd;
     min-height: 1.2em;
 }
+
+.tab{
+    width: 2em;
+    height:1em;
+    display: inline-block;
+}

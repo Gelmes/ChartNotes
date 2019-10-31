@@ -25,6 +25,10 @@ Work Breakdown
             ctrl-a
             ctrl-c
             ctrl-p
+            Select Rows
+                tab
+                up
+                down
         Shortcuts
         Textbox or Divs?
             Divs

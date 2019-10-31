@@ -3,7 +3,6 @@
 const fs = require('fs');
 const path = require('path');
 const html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8');
-const shallow = require ('enzyme');
 
 jest.dontMock('fs');
 
@@ -76,12 +75,8 @@ describe('TAB Shortcut', () => {
         expect(tr.level).toBeDefined();
     });
 
-    test('TAB Shortcut Exists', () => {
-        expect(sh.handleTab).toBeDefined();
-    });
-
     test('Shortcut increments hirarchy', () => {
-        sh.handleTab();
+        ta.increaseLevel();
         expect(ta.rows.length).toBe(2);
         expect(ta.getTargetRow()).toBe(1);
         expect(tr.index).toBe(1);
@@ -89,17 +84,77 @@ describe('TAB Shortcut', () => {
     });
 
     test('hirarchy does not surpass row above', () =>{
-        sh.handleTab();
+        ta.increaseLevel();
         expect(ta.rows.length).toBe(2);
         expect(ta.getTargetRow()).toBe(1);
         expect(tr.index).toBe(1);
         expect(tr.level).toBe(1);
     });
 
-    test('Press Enter key', () =>{        
-
+    test('TextRow have addTab function', () =>{
+        expect(tr.addTab).toBeDefined();
     });
 
+    test('addTab inserts div element into row', () =>{
+        expect(tr.content.children().length).toBe(0);
+        tr.addTab();
+        expect(tr.content.children().length).toBe(1);
+        tr.addTab();
+        expect(tr.content.children().length).toBe(2);
+    });
+
+    test('Increasing row level adds a tab to current row', () =>{
+        expect(tr.content.children().length).toBe(0);
+        tr.increaseLevel();
+        expect(tr.content.children().length).toBe(1);
+        tr.increaseLevel();
+        expect(tr.content.children().length).toBe(2);
+    });
+
+    test('Increasing texArea adds tab to current row', () =>{
+        expect(tr.content.children().length).toBe(0);
+        ta.increaseLevel();
+        expect(tr.content.children().length).toBe(1);
+        ta.increaseLevel();
+        expect(tr.content.children().length).toBe(1); // Level does not surpass that of previous row
+    });
+    
+    test('Increases the level of rows below', () =>{
+        // Create a new row and increase level
+        ta.appendRow();                   
+        ta.increaseLevel();
+        tr = ta.rows[ta.getTargetRow()];
+        expect(tr.content.children().length).toBe(1);
+
+        // Go up a row and increase its level
+        ta.setTargetRow(1);
+        ta.increaseLevel();
+        tr = ta.rows[ta.getTargetRow()];
+        expect(tr.content.children().length).toBe(1);
+
+        // Go back down a row and see if its level increased
+        ta.setTargetRow(2);
+        tr = ta.rows[ta.getTargetRow()];
+        expect(tr.content.children().length).toBe(2);
+    });
+    
+    test('New line makes row at current level', () =>{
+        // Create a new row and increase level
+        ta.appendRow();                   
+        ta.increaseLevel();
+        
+
+        // Go up a row and increase its level
+        ta.setTargetRow(1);
+        ta.increaseLevel();
+
+        
+
+        // Go back down a row and see if its level increased
+        ta.setTargetRow(2);
+        ta.appendRow();
+        expect(ta.rows[ta.getTargetRow()].getLevel()).toBe(ta.rows[ta.getTargetRow()-1].getLevel());
+    });
 
 
 });

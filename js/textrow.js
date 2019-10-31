@@ -4,14 +4,15 @@ var $ = require("jquery");
 class TextRow{
     constructor(options) {
       // General Variables
-      this.level = 0;
+      
 
       // Variables that can be passed to constructor and their default values
       const defaults = {
         parent: null,
         content: null,
         index: null,
-        id: 0
+        id: 0,
+        level: 0
       };
 
       // Copies the passed values to the default value list
@@ -29,6 +30,14 @@ class TextRow{
       else { this.parent.content.html(this.genRowHtml(this.id)); }
 
       this.content.focusin(() => {this.setAsTarget();});
+
+      // Set tabs according to set level
+      if(this.level){
+        let counter = this.level;
+        while(counter--){
+          this.addTab();
+        }
+      }
 
     }
 
@@ -57,8 +66,17 @@ class TextRow{
       }
   }
 
+  getTabHtml(){
+    return "<div class='tab'></div>";
+  }
+
+  addTab(){
+    this.content.prepend(this.getTabHtml());
+  }
+
   increaseLevel(){
     this.level += 1;
+    this.addTab();
   }
 
   getLevel(){
