@@ -1,25 +1,42 @@
+// This file sets the functions called by the title bar memnu system
+
+
 const { BrowserWindow } = require('electron').remote;
 var $ = require("jquery");
+
+function menuClose(){
+     var window = BrowserWindow.getFocusedWindow();
+     window.close();
+}
+
+function menuMin(){
+     var window = BrowserWindow.getFocusedWindow();
+     window.minimize(); 
+}
+
+function menuMax(){
+     var window = BrowserWindow.getFocusedWindow(); 
+     window.maximize(); 
+}
 
 (function () {
 
     //var remote = require('remote'); 
     //var BrowserWindow = remote;
 
+   $(".navbar-menu").load("./menu.html");
+
    function init() { 
-        $("#min-btn").click( function (e) {
-             var window = BrowserWindow.getFocusedWindow();
-             window.minimize(); 
+        $(".menu-min").click( function (e) {
+             menuMin();
         });
 
-        $("#max-btn").click( function (e) {
-             var window = BrowserWindow.getFocusedWindow(); 
-             window.maximize(); 
+        $(".menu-max").click( function (e) {
+             menuMax();
         });
 
-        $("#close-btn").click( function (e) {
-             var window = BrowserWindow.getFocusedWindow();
-             window.close();
+        $(".menu-close").click( function (e) {
+             menuClose();
         }); 
    }; 
 

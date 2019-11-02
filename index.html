@@ -20,36 +20,20 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="no-drag navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                  role="button" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1"
-                  aria-disabled="true">Disabled</a>
-              </li>
+            <ul class="no-drag navbar-nav mr-auto navbar-menu">
+              <!-- <li class="nav-item active">
+                  <button id="min-btn" class="btn   btn-light btn-cleaned">
+                    <img   class="icon btn-cleaned" src="./open-iconic/svg/book.svg" alt="book">
+                  </button>
+              </li> -->
             </ul>
 
+            <div class="text-center title">ChartNotes.js</div>
+
             <div class="no-drag">
-              <button id="min-btn" class="btn   btn-light btn-cleaned"><img   class="icon" src="./open-iconic/svg/fullscreen-exit.svg" alt="fullscreen-exit"></button>
-              <button id="max-btn" class="btn   btn-light btn-cleaned"><img   class="icon" src="./open-iconic/svg/fullscreen-enter.svg" alt="fullscreen-enter"></button>
-              <button id="close-btn" class="btn btn-light btn-cleaned"><img class="icon" src="./open-iconic/svg/x.svg" alt="x"></button>
+              <button class="menu-min btn   btn-light btn-cleaned"><img   class="icon" src="./open-iconic/svg/arrow-thick-bottom.svg" alt="arrow-thick-bottom"></button>
+              <button class="menu-max btn   btn-light btn-cleaned"><img   class="icon" src="./open-iconic/svg/fullscreen-enter.svg" alt="fullscreen-enter"></button>
+              <button class="menu-close btn btn-light btn-cleaned"><img class="icon" src="./open-iconic/svg/x.svg" alt="x"></button>
             </div>
 
           </div>
@@ -60,7 +44,6 @@
     </br></br>
 
     <div class="TextArea"></div>
-
     <!-- Depricated will be removed in the future -->
     <!-- <h1>Hello World!</h1>
     We are using node <script>document.write(process.versions.node)</script>,
