@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "env DEBUG_MODE=1 jest --watch --collect-coverage"
+    "test": "jest --watch --collect-coverage"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +15,9 @@
     "jest-electron": "^0.1.7"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
-    "mousetrap": "^1.6.3"
+    "mousetrap": "^1.6.3",
+    "popper.js": "^1.16.0"
   }
 }

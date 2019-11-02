@@ -1,13 +1,90 @@
+html{
+    width: auto;
+    height:auto;
+    /* background: rgba(0, 0, 0, 0.5); */
+    /* border-radius: 10px; */
+}
+head{
+    width: auto;
+    height:auto;
+    /* border-radius: 10px; */
+    /* background: #333; */
+}
+body{
+    width: auto;
+    height:auto;
+    /* border-radius: 10px; */
+    /* background: #333; */
+}
+
+.nav{
+    padding:0px;
+}
+.nav-link{
+    padding:0px;
+}
+.navbar{
+    padding:0px;
+}
+.no-padding{
+    padding: 0px;
+}
+.btn-cleaned{
+    padding:0px;
+    padding-bottom: 4px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.icon {
+    width: 12px;
+    height: 12px;
+    fill: #f00; 
+}
+.icon-x {
+    fill: #f00; 
+}
+
+.dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height:2.5em;
+    /* background: #000; */
+    background: rgba(255, 255, 255, 1);
+    -webkit-app-region: no-drag;
+    border-bottom: 1px solid #eee;
+    padding:4px;
+  }
+  .tips {
+    position: relative;
+    -webkit-app-region: drag;
+  }
+
 .textrow{
-    display:inline-block;
-    width: 100%;
-    border-radius: 3px;
-    background: #ddd;
-    min-height: 1.2em;
+    display:block;
+    border-radius: 5px;
+    background: #eee;
+    min-height: 1.5em;
+    line-height: 1.4em;
+    padding-left: 5px;
+    margin: 1px 10px;
+
 }
 
 .tab{
     width: 2em;
     height:1em;
     display: inline-block;
+}
+
+
+.drag{
+    -webkit-app-region: drag;
+}
+
+.no-drag {
+-webkit-app-region: no-drag;
 }

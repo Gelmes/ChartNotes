@@ -11,9 +11,11 @@ function createWindow () {
     height: 1060,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    //transparent: true,
+    frame:false,
   })
-
+  win.removeMenu();
   // and load the index.html of the app.
   win.loadFile('index.html')
 
@@ -28,6 +30,7 @@ function createWindow () {
     win = null
   })
 }
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
