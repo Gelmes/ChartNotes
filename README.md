@@ -1,8 +1,14 @@
 # React with Electron
-
+Work in progress!!!
 An App created to work together with React and Electron
 
-## Setup
+## Basic  Setup
+```
+npm install
+npm start
+```
+
+## Initial Project Setup
 ```
 npx create-react-app app-name
 cd app-name
@@ -13,7 +19,7 @@ npm install cross-env
 npm start
 ```
 
-## Styling with Bootstrap
+## Styling done with Bootstrap
 
 https://facebook.github.io/create-react-app/docs/adding-bootstrap
 
