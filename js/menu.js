@@ -29,3 +29,7 @@ function menuSaveAs(){
         console.log(e);
     }
 }
+
+function menuOpen(){
+    ta.removeAllRows();
+}

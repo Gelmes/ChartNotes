@@ -45,6 +45,11 @@ class TextRow{
     this.content.html(str);
   }
 
+  reset(){
+    this.setContent("");
+    this.level = 0;    
+  }
+
   setAsTarget(){
     var index = $(".textrow").index(this.content);
     this.parent.setTargetRow(index);

@@ -80,6 +80,14 @@ class TextArea{
     }
   }
 
+  removeAllRows(){
+    this.rows[0].reset();
+    for( var i = 1; i < this.rows.length; i++){
+      this.rows[i].content.remove();
+    }
+  
+  }
+
   // Gets a cleaned up version of TextArea with its variables and rows converted to a dictionary list
   // This is expected to be used along with the SaveAs feature and JSON.stringify
   get(){
