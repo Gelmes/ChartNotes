@@ -86,6 +86,22 @@ class TextRow{
   focus(){
     this.content.focus();
   }
+
+  get(){
+    var dict = [];
+    // this.praent will be an exception since it will create a cyclic list
+    // we will later add it in the set method
+    var except = ["parent"];
+    for (var name in this){
+        if(except.indexOf(name) < 0){
+          
+        console.log(name);
+        dict[name] = eval("this." + name);
+      }
+    }
+
+    return dict;
+  }
 }
 
 module.exports = TextRow;

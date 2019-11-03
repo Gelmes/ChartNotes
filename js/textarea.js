@@ -80,6 +80,29 @@ class TextArea{
     }
   }
 
+  // Gets a cleaned up version of TextArea with its variables and rows converted to a dictionary list
+  // This is expected to be used along with the SaveAs feature and JSON.stringify
+  get(){
+    var dict = [];
+    var except = ["rows"];
+    for (var name in this){
+        if(except.indexOf(name) < 0){
+          
+        console.log(name);
+        dict[name] = eval("this." + name);
+      }
+    }
+    // Special handling of except variables is required since they return circular lists
+    var rows = []; //
+    for (var i = 0; i < this.rows.length; i++){
+            // make get statement for rows and add them to rows list
+            rows.push(this.rows[i].get());
+    }
+    dict["rows"] = rows;
+
+    return dict;
+
+  }
 
 }
 
