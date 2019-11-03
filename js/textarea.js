@@ -84,11 +84,9 @@ class TextArea{
   // This is expected to be used along with the SaveAs feature and JSON.stringify
   get(){
     var dict = [];
-    var except = ["rows"];
+    var except = ["rows","content","element"];
     for (var name in this){
         if(except.indexOf(name) < 0){
-          
-        console.log(name);
         dict[name] = eval("this." + name);
       }
     }
@@ -101,6 +99,23 @@ class TextArea{
     dict["rows"] = rows;
 
     return dict;
+
+  }
+
+  set(dict){
+    
+    var except = ["rows"];
+    for (var key in dict){
+      if(except.indexOf(key) < 0){
+        eval("this." + key) = dict[key];
+        console.log(key);
+      }    
+    }
+
+    for (var i = 0; i < dict["rows"]; i++){
+      //this.rows.push()
+    }
+    
 
   }
 

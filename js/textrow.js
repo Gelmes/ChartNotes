@@ -88,17 +88,16 @@ class TextRow{
   }
 
   get(){
-    var dict = [];
+    var dict = {};
     // this.praent will be an exception since it will create a cyclic list
     // we will later add it in the set method
-    var except = ["parent"];
+    var except = ["parent","content"];
     for (var name in this){
         if(except.indexOf(name) < 0){
-          
-        console.log(name);
         dict[name] = eval("this." + name);
       }
     }
+    dict["text"] = this.content.text();
 
     return dict;
   }
