@@ -31,5 +31,6 @@ function menuSaveAs(){
 }
 
 function menuOpen(){
-    ta.removeAllRows();
+    console.log(ta["rowCounter"]);
+    ta.reset();
 }

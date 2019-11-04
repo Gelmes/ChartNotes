@@ -80,6 +80,12 @@ class TextArea{
     }
   }
 
+  reset(){
+    this.setTargetRow(0);
+    this.rowCounter = 0;
+    removeAllRows();
+  }
+
   removeAllRows(){
     this.rows[0].reset();
     for( var i = 1; i < this.rows.length; i++){
@@ -115,7 +121,7 @@ class TextArea{
     var except = ["rows"];
     for (var key in dict){
       if(except.indexOf(key) < 0){
-        eval("this." + key) = dict[key];
+        this[key] = dict[key];
         console.log(key);
       }    
     }
