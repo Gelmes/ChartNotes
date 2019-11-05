@@ -32,5 +32,12 @@ function menuSaveAs(){
 
 function menuOpen(){
     console.log(ta["rowCounter"]);
-    ta.reset();
+    var fileName = dialog.showOpenDialogSync({ properties: ['openFile'] })[0];
+    if(fileName){
+        ta.reset();
+    }
+    
+    var data = fs.readFileSync(fileName);
+    var dict = JSON.parse(data);
+    console.log(dict);
 }

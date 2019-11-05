@@ -82,8 +82,8 @@ class TextArea{
 
   reset(){
     this.setTargetRow(0);
-    this.rowCounter = 0;
-    removeAllRows();
+    this.removeAllRows();
+    this.rowCounter = 1;
   }
 
   removeAllRows(){
@@ -117,7 +117,6 @@ class TextArea{
   }
 
   set(dict){
-    
     var except = ["rows"];
     for (var key in dict){
       if(except.indexOf(key) < 0){
