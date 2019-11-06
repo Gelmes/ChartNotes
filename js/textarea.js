@@ -125,8 +125,15 @@ class TextArea{
       }    
     }
 
-    for (var i = 0; i < dict["rows"]; i++){
-      //this.rows.push()
+    this.rows[0].setContent(dict["rows"][0].text);
+    for (var i = 1; i < dict["rows"]; i++){
+      this.appendRow();
+      this.rows[i].setContent(dict["rows"][i].text);
+      this.rows[i].index = dict["rows"][i].index;
+      this.rows[i].id = dict["rows"][i].id;
+      while(this.rows[i].level != dict["rows"][i]){
+        this.rows[i].increaseLevel();
+      }
     }
     
 

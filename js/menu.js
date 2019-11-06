@@ -39,5 +39,6 @@ function menuOpen(){
     
     var data = fs.readFileSync(fileName);
     var dict = JSON.parse(data);
+    ta.set(dict);
     console.log(dict);
 }
