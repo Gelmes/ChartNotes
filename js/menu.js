@@ -25,20 +25,23 @@ function menuSaveAs(){
     var content = JSON.stringify(ditc_obj, null, 4);
     try { fs.writeFileSync(fileName, content, 'utf-8'); }
     catch(e) { 
-        alert('Failed to save the file !'); 
-        console.log(e);
+        console.log('Failed to save the file !'); 
+        //console.log(e);
     }
 }
 
 function menuOpen(){
-    console.log(ta["rowCounter"]);
-    var fileName = dialog.showOpenDialogSync({ properties: ['openFile'] })[0];
-    if(fileName){
-        ta.reset();
+    try {
+        var fileName = dialog.showOpenDialogSync({ properties: ['openFile'] })[0];
+        if(fileName){
+            var data = fs.readFileSync(fileName);
+            var dict = JSON.parse(data);
+            ta.set(dict);
+        }
     }
-    
-    var data = fs.readFileSync(fileName);
-    var dict = JSON.parse(data);
-    ta.set(dict);
-    console.log(dict);
+    catch(e) { 
+        console.log('Failed to open the file !'); 
+        //console.log(e);
+    }
+
 }

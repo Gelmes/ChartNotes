@@ -64,7 +64,7 @@ class TextRow{
   addRowAt(index){
       if(index === 0) {
         this.parent.content.prepend(this.genRowHtml(this.id));  
-        this.content =  $(this.parent.element + " :first-child");
+        this.content =  $(this.parent.element + " #" + this.id);
       }  else {
         $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div id='" + this.id + "' class='textrow mousetrap' contenteditable='true'>row " + this.id + "</div>");
         this.content =  $(this.parent.element + " > :nth-child(" + (index+1) + ")");

@@ -38,7 +38,6 @@ class TextArea{
 
   setTargetRow(value){
     if(value < this.rows.length && value >= 0){
-      //console.log("Setting length: " + value);
       this.targetRowIndex = value;
     }
   }
@@ -81,17 +80,16 @@ class TextArea{
   }
 
   reset(){
-    this.setTargetRow(0);
     this.removeAllRows();
+    this.setTargetRow(0);
     this.rowCounter = 1;
   }
 
   removeAllRows(){
-    this.rows[0].reset();
-    for( var i = 1; i < this.rows.length; i++){
-      this.rows[i].content.remove();
-    }
-  
+    while( this.rows.length){
+      var row = this.rows.pop();
+      row.content.remove();
+    }  
   }
 
   // Gets a cleaned up version of TextArea with its variables and rows converted to a dictionary list
@@ -117,6 +115,18 @@ class TextArea{
   }
 
   set(dict){
+    
+    this.reset();
+    for (var i = dict["rows"].length-1; i >= 0; i--){
+      this.addRowAt(0);
+      this.rows[0].setContent(dict["rows"][i].text);
+      while(this.rows[0].level < dict["rows"][i].level){
+        this.rows[0].increaseLevel();
+      }
+      this.rows[0].index = dict["rows"][i].index;
+      this.rows[0].id = dict["rows"][i].id;
+    }
+
     var except = ["rows"];
     for (var key in dict){
       if(except.indexOf(key) < 0){
@@ -124,21 +134,7 @@ class TextArea{
         console.log(key);
       }    
     }
-
-    this.rows[0].setContent(dict["rows"][0].text);
-    for (var i = 1; i < dict["rows"]; i++){
-      this.appendRow();
-      this.rows[i].setContent(dict["rows"][i].text);
-      this.rows[i].index = dict["rows"][i].index;
-      this.rows[i].id = dict["rows"][i].id;
-      while(this.rows[i].level != dict["rows"][i]){
-        this.rows[i].increaseLevel();
-      }
-    }
-    
-
   }
-
 }
 
 module.exports = TextArea;
