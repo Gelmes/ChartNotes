@@ -35,8 +35,11 @@ function menuOpen(){
         var fileName = dialog.showOpenDialogSync({ properties: ['openFile'] })[0];
         if(fileName){
             var data = fs.readFileSync(fileName);
-            var dict = JSON.parse(data);
-            ta.set(dict);
+            var dict = JSON.parse(data);            
+            $(".textrow").fadeOut();
+            setTimeout(function() {
+                ta.set(dict);
+            }, 500);
         }
     }
     catch(e) { 

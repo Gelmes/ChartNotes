@@ -58,7 +58,7 @@ class TextRow{
   }
 
   genRowHtml(id){
-    return "<div id='" + id + "' class='textrow mousetrap' contenteditable='true'>row</div>";
+    return "<div id='" + id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'>row</div>";
   }
 
   addRowAt(index){
@@ -66,9 +66,11 @@ class TextRow{
         this.parent.content.prepend(this.genRowHtml(this.id));  
         this.content =  $(this.parent.element + " #" + this.id);
       }  else {
-        $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div id='" + this.id + "' class='textrow mousetrap' contenteditable='true'>row " + this.id + "</div>");
+        $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div id='" + this.id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'>row " + this.id + "</div>");
         this.content =  $(this.parent.element + " > :nth-child(" + (index+1) + ")");
+        
       }
+      this.content.fadeIn("slow");
   }
 
   getTabHtml(){
