@@ -6,9 +6,9 @@ const { TextRow } = require('./js/textrow.js');
 var fs = require('fs');
 var $ = require("jquery");
 
-function menuSaveAs(){
-    var fileName = dialog.showOpenDialogSync({ title:"Save As", buttonLabel:"Save", properties: ['openFile', 'promptToCreate'] })[0];
+WORKING_FILE = null;
 
+function saveToFile(fileName){
     var dict = {};
     dict = ta.get();
     var ditc_obj = {};
@@ -27,6 +27,26 @@ function menuSaveAs(){
     catch(e) { 
         console.log('Failed to save the file !'); 
         //console.log(e);
+    }
+}
+
+function menuSaveAs(){
+    try{
+       var fileName = dialog.showOpenDialogSync({ title:"Save As", buttonLabel:"Save", properties: ['openFile', 'promptToCreate'] })[0];
+       if(fileName){
+           WORKING_FILE = fileName;
+           saveToFile(fileName);
+       }
+    } catch (e) {
+        console.log('Save as canceled'); 
+    }
+}
+
+function menuSave(){
+    if(WORKING_FILE){
+        saveToFile(WORKING_FILE);
+    } else {
+        menuSaveAs();
     }
 }
 
