@@ -70,7 +70,11 @@ class TextRow{
         this.content =  $(this.parent.element + " > :nth-child(" + (index+1) + ")");
         
       }
-      this.content.fadeIn("slow");
+      if(this.parent.fade){
+        this.content.fadeIn();
+      } else{
+        this.content.show();
+      }
   }
 
   getTabHtml(){

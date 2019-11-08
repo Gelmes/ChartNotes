@@ -7,7 +7,8 @@ class TextArea{
     this.content = $(element);
     this.rows = [];
     this.targetRowIndex = 0;
-    this.rowCounter = 0; // Increments every time a new row gets added
+    this.rowCounter = 0; // Increments every time a new row gets added,
+    this.fade = 1;
     this.addRow();
   }
 
@@ -49,7 +50,7 @@ class TextArea{
   increaseLevel(){
     let targetRow = this.getTargetRow();
     if(targetRow != 0){
-      // Check that the level of the current row does not increase more then one of the prev row
+      // Check that the lfadeOutevel of the current row does not increase more then one of the prev row
       if(this.rows[targetRow].getLevel() <= this.rows[targetRow-1].getLevel()){
         for(var i = targetRow+1; i < this.rows.length; i++){
           if(this.rows[targetRow].getLevel() < this.rows[i].getLevel()){
@@ -82,7 +83,7 @@ class TextArea{
   reset(){
     this.removeAllRows();
     this.setTargetRow(0);
-    this.rowCounter = 1;
+    this.rowCounter = 0;
   }
 
   removeAllRows(){
@@ -104,6 +105,7 @@ class TextArea{
     }
     // Special handling of except variables is required since they return circular lists
     var rows = []; //
+
     for (var i = 0; i < this.rows.length; i++){
             // make get statement for rows and add them to rows list
             rows.push(this.rows[i].get());
@@ -116,6 +118,9 @@ class TextArea{
 
   set(dict){
     
+    if(this.fade){
+      $(".textrow").fadeOut();
+    } 
     this.reset();
     for (var i = dict["rows"].length-1; i >= 0; i--){
       this.addRowAt(0);

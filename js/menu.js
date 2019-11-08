@@ -36,10 +36,9 @@ function menuOpen(){
         if(fileName){
             var data = fs.readFileSync(fileName);
             var dict = JSON.parse(data);            
-            $(".textrow").fadeOut();
             setTimeout(function() {
                 ta.set(dict);
-            }, 500);
+            }, 250);
         }
     }
     catch(e) { 
