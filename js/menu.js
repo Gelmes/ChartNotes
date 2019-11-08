@@ -2,11 +2,9 @@
 // Exit, Minimize, and Close functions can be found in titlebar.js
 
 const { dialog } = require('electron').remote;
-const { TextRow } = require('./js/textrow.js');
 var fs = require('fs');
+var path = require('path');
 var $ = require("jquery");
-
-WORKING_FILE = null;
 
 function saveToFile(fileName){
     var dict = {};
@@ -28,6 +26,7 @@ function saveToFile(fileName){
         console.log('Failed to save the file !'); 
         //console.log(e);
     }
+    clearFileChanges();
 }
 
 function menuSaveAs(){
@@ -43,7 +42,7 @@ function menuSaveAs(){
 }
 
 function menuSave(){
-    if(WORKING_FILE){
+    if(WORKING_FILE != ""){
         saveToFile(WORKING_FILE);
     } else {
         menuSaveAs();
@@ -51,7 +50,7 @@ function menuSave(){
 }
 
 function menuOpen(){
-    try {
+    // try {
         var fileName = dialog.showOpenDialogSync({ properties: ['openFile'] })[0];
         if(fileName){
             var data = fs.readFileSync(fileName);
@@ -59,12 +58,14 @@ function menuOpen(){
             setTimeout(function() {
                 ta.set(dict);
             }, 250);
+            WORKING_FILE = fileName;
+            clearFileChanges();
         }
-    }
-    catch(e) { 
-        console.log('Failed to open the file !'); 
-        //console.log(e);
-    }
+    // }
+    // catch(e) { 
+    //     console.log('Failed to open the file !'); 
+    //     //console.log(e);
+    // }
 
 }
 
@@ -72,10 +73,18 @@ function menuNew(){
     try {
         ta.reset();
         ta.addRow();
+        
+        WORKING_FILE = null;
+        $(".title").html("*");
     }
     catch(e) { 
         console.log('Failed to create new file !'); 
         //console.log(e);
     }
 
+}
+
+
+module.exports = {
+    checkForFileChanges
 }

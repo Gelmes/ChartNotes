@@ -2,6 +2,7 @@ const Mousetrap = require("mousetrap");
 
 class Shortcuts{
     constructor(texbox) {
+        this.keyPressed = 0; // Used to indicate when there are file changes
         this.texbox = texbox;
         //this.texbox.content.keydown((event) =>this.handleKeyDown(event));
         this.shortcuts = {
@@ -46,6 +47,7 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts['newRow']);
         this.shortcuts['newRow'] = key;
         Mousetrap.bind(key, function(e) {
+            sh.keyPressed = 1;
             event.preventDefault();
             ta.appendRow();
         });
@@ -54,6 +56,7 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts['downRow']);
         this.shortcuts['downRow'] = key;
         Mousetrap.bind(key, function(e) {
+            sh.keyPressed = 1;
             event.preventDefault();
             ta.goDown();
         });
@@ -62,6 +65,7 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts['upRow']);
         this.shortcuts['upRow'] = key;
         Mousetrap.bind(key, function(e) {
+            sh.keyPressed = 1;
             event.preventDefault();
             ta.goUp();
         });
@@ -70,6 +74,7 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts['incLevel']);
         this.shortcuts['incLevel'] = key;
         Mousetrap.bind(key, function(e) {
+            sh.keyPressed = 1;
             event.preventDefault();
             ta.increaseLevel();
         });
