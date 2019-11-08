@@ -78,16 +78,25 @@ class TextRow{
   }
 
   getTabHtml(){
-    return "<div class='tab'></div>";
+    return "<div class='tab'>-</div>";
   }
 
   addTab(){
     this.content.prepend(this.getTabHtml());
   }
 
+  removeTab(){
+    $("#" + this.id + " .tab:first-child").remove();
+  }
+
   increaseLevel(){
     this.level += 1;
     this.addTab();
+  }
+
+  decreaseLevel(){
+    if(this.level > 0) { this.level--;}
+    this.removeTab();
   }
 
   getLevel(){

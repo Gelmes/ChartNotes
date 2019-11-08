@@ -83,8 +83,3 @@ function menuNew(){
     }
 
 }
-
-
-module.exports = {
-    checkForFileChanges
-}

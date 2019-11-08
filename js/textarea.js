@@ -62,6 +62,23 @@ class TextArea{
     }
   }
 
+  decreaseLevel(){
+    let targetRow = this.getTargetRow();
+    
+    if(targetRow != 0){    
+      // if(this.rows[targetRow].getLevel() <= this.rows[targetRow-1].getLevel()){
+      //   return;
+      // }
+      
+      for(var i = targetRow+1; i < this.rows.length; i++){
+        if(this.rows[targetRow].getLevel() < this.rows[i].getLevel()){
+          this.rows[i].decreaseLevel();
+        } else {break};
+      }
+      this.rows[targetRow].decreaseLevel();
+    }
+  }
+
   goDown(){
     this.setTargetRow(this.getTargetRow() + 1);
     try{
