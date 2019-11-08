@@ -47,3 +47,15 @@ function menuOpen(){
     }
 
 }
+
+function menuNew(){
+    try {
+        ta.reset();
+        ta.addRow();
+    }
+    catch(e) { 
+        console.log('Failed to create new file !'); 
+        //console.log(e);
+    }
+
+}

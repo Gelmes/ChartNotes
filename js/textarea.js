@@ -82,7 +82,7 @@ class TextArea{
 
   reset(){
     this.removeAllRows();
-    this.setTargetRow(0);
+    this.targetRowIndex = 0;
     this.rowCounter = 0;
   }
 
