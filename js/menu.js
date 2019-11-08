@@ -72,7 +72,7 @@ function menuOpen(){
 function menuNew(){
     try {
         ta.reset();
-        ta.addRow();
+        ta.initRow();
         
         WORKING_FILE = null;
         $(".title").html("*");

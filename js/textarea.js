@@ -9,14 +9,14 @@ class TextArea{
     this.targetRowIndex = 0;
     this.rowCounter = 0; // Increments every time a new row gets added,
     this.fade = 1;
-    this.addRow();
+    this.initRow();
   }
 
   setContent(str){
     this.content.html(str);
   }
 
-  addRow(){
+  initRow(){
       this.addRowAt(this.getTargetRow());
   }
 
