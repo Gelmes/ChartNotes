@@ -66,7 +66,7 @@ class TextArea{
     let targetRow = this.getTargetRow();
     
     if(targetRow != 0){
-      if((targetRow == this.rows.length) && (this.rows[targetRow].getLevel() < this.rows[targetRow+1].getLevel()) ){
+      if((targetRow < this.rows.length-1) && (this.rows[targetRow].getLevel() < this.rows[targetRow+1].getLevel()) ){
         if(this.rows[targetRow].getLevel() <= this.rows[targetRow-1].getLevel()){
           return;
         }
