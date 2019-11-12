@@ -10,13 +10,15 @@ class Shortcuts{
             'downRow' : 'down',
             'upRow' : 'up',
             'incLevel' : 'tab',
-            'decLevel' : 'shift+tab'
+            'decLevel' : 'shift+tab',
+            'delRow' : 'del'
         }
         this.setKey_newRow(this.shortcuts['newRow']);
         this.setKey_downRow(this.shortcuts['downRow']);
         this.setKey_upRow(this.shortcuts['upRow']);
         this.setKey_incLevel(this.shortcuts['incLevel']);
         this.setKey_decLevel(this.shortcuts['decLevel']);
+        this.setKey_delRow(this.shortcuts['delRow']);
     }
     
     // // Depricated code Likely won't use again 
@@ -89,6 +91,21 @@ class Shortcuts{
             event.preventDefault();
             ta.decreaseLevel();
         });
+    }
+    setKey_delRow(key){
+        try{
+            Mousetrap.unbind(this.shortcuts['delLevel']);
+        } catch (e){
+            //console.log(e);
+        }
+        
+        this.shortcuts['delLevel'] = key;
+        Mousetrap.bind(key, function(e) {
+            sh.keyPressed = 1;
+            event.preventDefault();
+            ta.deleteRow();
+        });
+
     }
 
   }

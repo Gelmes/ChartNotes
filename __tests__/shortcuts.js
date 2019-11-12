@@ -42,4 +42,42 @@ describe('Shortcut Tests', () => {
         ta.decreaseLevel();
         expect(ta.rows[ta.getTargetRow()].getLevel()).toBe(1);
     });
+
+    
+});
+
+describe('Delete Row', () => {
+    
+    beforeEach(() => {
+        document.documentElement.innerHTML = html.toString();
+        ta = new TextArea(".TextArea");
+        sh = new Shortcuts(ta); 
+        ta.appendRow();    
+        ta.appendRow();    
+        tr = ta.rows[ta.getTargetRow()];
+    });
+
+    test('TextArea deleteRow exists', () => {           
+        expect(ta.deleteRow).toBeDefined();
+    });
+
+    test('TextArea deleteRow decreases row count exists', () => {           
+        expect(ta.rows.length).toBe(3);          
+        ta.deleteRow();
+        expect(ta.rows.length).toBe(2);
+    });
+    
+    test('TextArea deleteRow removes target row', () => {   
+        ta.setTargetRow(1);
+        expect(ta.content.children("#" + 1).length).toBe(1);
+        ta.deleteRow();
+        expect(ta.content.children("#" + 1).length).toBe(0);
+    });
+    
+    test('TextArea deleteRow does not erase row zero', () => {     
+        ta.deleteRow();
+        ta.deleteRow();
+        ta.deleteRow();      
+        expect(ta.content.children("#" + 0).length).toBe(1);
+    });
 });

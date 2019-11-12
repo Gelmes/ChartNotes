@@ -25,6 +25,17 @@ class TextArea{
       this.addRowAt(targetRow);
   }  
 
+  deleteRow(){    
+    if(this.getTargetRow()){
+      this.rows[this.getTargetRow()].delete();
+      this.rows.splice(this.getTargetRow(), 1);
+      if(this.getTargetRow() == this.rows.length){
+        this.setTargetRow(this.getTargetRow()-1);
+      }
+      this.rows[this.getTargetRow()].focus();
+    }
+  }
+
   addRowAt(index){
     var newLevel  = 0;
     if(index){ // If we are not row 0

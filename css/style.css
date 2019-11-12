@@ -91,6 +91,7 @@ body{
     height:1em;
     display: inline-block;
     text-align: center;
+    pointer-events: none;
 }
 
 

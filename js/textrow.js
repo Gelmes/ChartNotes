@@ -79,6 +79,10 @@ class TextRow{
       }
   }
 
+  delete(){
+    this.content.remove();
+  }
+
   addTab(){
     this.content.css("padding-left", (this.level * TAB_WIDTH) + "em");
   }
