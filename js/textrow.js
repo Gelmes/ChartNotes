@@ -1,6 +1,8 @@
 
 var $ = require("jquery");
 
+TAB_WIDTH = 2;
+
 class TextRow{
     constructor(options) {
       // General Variables
@@ -42,7 +44,7 @@ class TextRow{
     }
 
   setContent (str){
-    this.content.html(str);
+    this.content.children(".text").html(str);
   }
 
   reset(){
@@ -58,7 +60,7 @@ class TextRow{
   }
 
   genRowHtml(id){
-    return "<div id='" + id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'>row</div>";
+    return "<div id='" + id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'><span class='text'>row</span></div>";
   }
 
   addRowAt(index){
@@ -66,7 +68,7 @@ class TextRow{
         this.parent.content.prepend(this.genRowHtml(this.id));  
         this.content =  $(this.parent.element + " #" + this.id);
       }  else {
-        $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div id='" + this.id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'>row " + this.id + "</div>");
+        $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div id='" + this.id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'><span class='text'>row " + this.id + "</span></div>");
         this.content =  $(this.parent.element + " > :nth-child(" + (index+1) + ")");
         
       }
@@ -77,16 +79,12 @@ class TextRow{
       }
   }
 
-  getTabHtml(){
-    return "<div class='tab'></div>";
-  }
-
   addTab(){
-    this.content.prepend(this.getTabHtml());
+    this.content.css("padding-left", (this.level * TAB_WIDTH) + "em");
   }
 
   removeTab(){
-    $("#" + this.id + " .tab:first-child").remove();
+    this.content.css("padding-left", (this.level * TAB_WIDTH) + "em");
   }
 
   increaseLevel(){
