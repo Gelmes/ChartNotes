@@ -78,7 +78,7 @@ class TextRow{
   }
 
   getTabHtml(){
-    return "<div class='tab'>-</div>";
+    return "<div class='tab'></div>";
   }
 
   addTab(){

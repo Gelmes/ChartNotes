@@ -65,10 +65,12 @@ class TextArea{
   decreaseLevel(){
     let targetRow = this.getTargetRow();
     
-    if(targetRow != 0){    
-      // if(this.rows[targetRow].getLevel() <= this.rows[targetRow-1].getLevel()){
-      //   return;
-      // }
+    if(targetRow != 0){
+      if((targetRow == this.rows.length) && (this.rows[targetRow].getLevel() < this.rows[targetRow+1].getLevel()) ){
+        if(this.rows[targetRow].getLevel() <= this.rows[targetRow-1].getLevel()){
+          return;
+        }
+      }
       
       for(var i = targetRow+1; i < this.rows.length; i++){
         if(this.rows[targetRow].getLevel() < this.rows[i].getLevel()){
