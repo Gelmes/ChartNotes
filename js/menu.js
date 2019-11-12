@@ -31,7 +31,7 @@ function saveToFile(fileName){
 
 function menuSaveAs(){
     try{
-       var fileName = dialog.showOpenDialogSync({ title:"Save As", buttonLabel:"Save", properties: ['openFile', 'promptToCreate'] })[0];
+       var fileName = dialog.showOpenDialogSync({ title:"Save As",defaultPath:"Untitled", buttonLabel:"Save", properties: ['openFile'] })[0];
        if(fileName){
            WORKING_FILE = fileName;
            saveToFile(fileName);
@@ -74,8 +74,8 @@ function menuNew(){
         ta.reset();
         ta.initRow();
         
-        WORKING_FILE = null;
-        $(".title").html("*");
+        WORKING_FILE = "";
+        $(".title").html("Untitled *");
     }
     catch(e) { 
         console.log('Failed to create new file !'); 
