@@ -131,7 +131,11 @@ class Shortcuts{
             var position = window.getSelection().getRangeAt(0).startOffset;
             if(position == 0){
                 event.preventDefault();
+                var target = ta.getTargetRow();
                 ta.deleteRow();
+                if(target < ta.rows.length){
+                    ta.goUp();
+                }
             }
         });
 

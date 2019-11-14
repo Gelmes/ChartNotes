@@ -44,7 +44,7 @@ class TextRow{
     }
 
   setContent (str){
-    this.content.children(".text").html(str);
+    this.content.html(str);
   }
 
   reset(){
@@ -60,7 +60,7 @@ class TextRow{
   }
 
   genRowHtml(id){
-    return "<div id='" + id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'><span class='text'>row</span></div>";
+    return "<div id='" + id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'>row</div>";
   }
 
   addRowAt(index){
@@ -68,7 +68,7 @@ class TextRow{
         this.parent.content.prepend(this.genRowHtml(this.id));  
         this.content =  $(this.parent.element + " #" + this.id);
       }  else {
-        $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div id='" + this.id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'><span class='text'>row " + this.id + "</span></div>");
+        $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div id='" + this.id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'>row " + this.id + "</div>");
         this.content =  $(this.parent.element + " > :nth-child(" + (index+1) + ")");
         
       }
@@ -110,20 +110,20 @@ class TextRow{
   }
 
   setCaretToPos(pos){
-    var element = this.content.children(".text");
-    var el = element[0];
-    if(pos > element.html().length || pos < 0){
-      pos = element.html().length;
+    var el = this.content[0];
+    if(this.content.html().length){
+      if(pos > this.content.html().length || pos < 0){
+        pos = this.content.html().length;
+      }
+      var range = document.createRange();
+      var sel = window.getSelection();
+      range.setStart(el.childNodes[0], pos);
+      range.setEnd(el.childNodes[0], pos);
+      range.collapse(true);
+      sel.removeAllRanges();
+      sel.addRange(range);
+      el.focus();
     }
-    var range = document.createRange();
-    var sel = window.getSelection();
-    range.setStart(el.childNodes[0], pos);
-    range.setEnd(el.childNodes[0], pos);
-    range.collapse(true);
-    sel.removeAllRanges();
-    sel.addRange(range);
-    el.focus();
-
   }
 
   setCaretToEnd(){
