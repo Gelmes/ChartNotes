@@ -112,9 +112,9 @@ class TextRow{
 
   setCaretToPos(pos){
     var el = this.content[0];
-    if(this.content.html().length){
-      if(pos > this.content.html().length || pos < 0){
-        pos = this.content.html().length;
+    if(this.content.text().length){
+      if(pos > this.content.text().length || pos < 0){
+        pos = this.content.text().length;
       }
       var range = document.createRange();
       var sel = window.getSelection();
