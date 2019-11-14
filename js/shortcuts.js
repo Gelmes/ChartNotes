@@ -86,7 +86,6 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts['downRow']);
         this.shortcuts['downRow'] = key;
         Mousetrap.bind(key, function(e) {
-            sh.keyPressed = 1;
             event.preventDefault();
             ta.goDown();
         });
@@ -95,7 +94,6 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts['upRow']);
         this.shortcuts['upRow'] = key;
         Mousetrap.bind(key, function(e) {
-            sh.keyPressed = 1;
             event.preventDefault();
             ta.goUp();
         });
@@ -151,7 +149,6 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts['fileNew']);
         this.shortcuts['fileNew'] = key;
         Mousetrap.bind(key, function(e) {
-            sh.keyPressed = 1;
             event.preventDefault();
             menuNew();
         });
@@ -161,7 +158,6 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts['fileSave']);
         this.shortcuts['fileSave'] = key;
         Mousetrap.bind(key, function(e) {
-            sh.keyPressed = 1;
             event.preventDefault();
             menuSave();
         });
@@ -171,7 +167,6 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts['fileOpen']);
         this.shortcuts['fileOpen'] = key;
         Mousetrap.bind(key, function(e) {
-            sh.keyPressed = 1;
             event.preventDefault();
             menuOpen();
         });

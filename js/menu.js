@@ -50,7 +50,7 @@ function menuSave(){
 }
 
 function menuOpen(){
-    // try {
+    try {
         var fileName = dialog.showOpenDialogSync({ properties: ['openFile'] })[0];
         if(fileName){
             var data = fs.readFileSync(fileName);
@@ -61,11 +61,11 @@ function menuOpen(){
             WORKING_FILE = fileName;
             clearFileChanges();
         }
-    // }
-    // catch(e) { 
-    //     console.log('Failed to open the file !'); 
-    //     //console.log(e);
-    // }
+    }
+    catch(e) { 
+        console.log('Failed to open the file !'); 
+        //console.log(e);
+    }
 
 }
 
