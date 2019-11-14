@@ -100,19 +100,19 @@ class TextArea{
   goDown(){
     this.setTargetRow(this.getTargetRow() + 1);
     try{
-      this.rows[this.getTargetRow()].focus();
       this.rows[this.getTargetRow()].setCaretToEnd();
     } catch (err){
-    this.setTargetRow(this.getTargetRow() - 1);
+      console.log(err);
+      this.setTargetRow(this.getTargetRow() - 1);
     }
   }
 
   goUp(){
     this.setTargetRow(this.getTargetRow() - 1);
     try{
-      this.rows[this.getTargetRow()].focus();
       this.rows[this.getTargetRow()].setCaretToEnd();
     } catch (err){
+      console.log(err);
       this.setTargetRow(this.getTargetRow() + 1);
     }
   }
