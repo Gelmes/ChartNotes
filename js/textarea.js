@@ -32,7 +32,7 @@ class TextArea{
       if(this.getTargetRow() == this.rows.length){
         this.setTargetRow(this.getTargetRow()-1);
       }
-      this.rows[this.getTargetRow()].focus();
+      this.rows[this.getTargetRow()].setCaretToEnd();
     }
   }
 
@@ -45,13 +45,18 @@ class TextArea{
     this.rowCounter += 1;
     this.rows.splice(index, 0, tr);
     this.setTargetRow(index);
-    tr.focus();
+    tr.setCaretToEnd();
+    
   }
 
   setTargetRow(value){
     if(value < this.rows.length && value >= 0){
       this.targetRowIndex = value;
     }
+  }
+
+  setCaretToEnd(){
+    this.rows[this.getTargetRow()].setCaretToEnd();
   }
 
   getTargetRow(value){
@@ -96,6 +101,7 @@ class TextArea{
     this.setTargetRow(this.getTargetRow() + 1);
     try{
       this.rows[this.getTargetRow()].focus();
+      this.rows[this.getTargetRow()].setCaretToEnd();
     } catch (err){
     this.setTargetRow(this.getTargetRow() - 1);
     }
@@ -105,6 +111,7 @@ class TextArea{
     this.setTargetRow(this.getTargetRow() - 1);
     try{
       this.rows[this.getTargetRow()].focus();
+      this.rows[this.getTargetRow()].setCaretToEnd();
     } catch (err){
       this.setTargetRow(this.getTargetRow() + 1);
     }

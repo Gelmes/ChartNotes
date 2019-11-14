@@ -109,6 +109,27 @@ class TextRow{
     this.content.focus();
   }
 
+  setCaretToPos(pos){
+    var element = this.content.children(".text");
+    var el = element[0];
+    if(pos > element.html().length || pos < 0){
+      pos = element.html().length;
+    }
+    var range = document.createRange();
+    var sel = window.getSelection();
+    range.setStart(el.childNodes[0], pos);
+    range.setEnd(el.childNodes[0], pos);
+    range.collapse(true);
+    sel.removeAllRanges();
+    sel.addRange(range);
+    el.focus();
+
+  }
+
+  setCaretToEnd(){
+    this.setCaretToPos(-1);
+  }
+
   get(){
     var dict = {};
     // this.praent will be an exception since it will create a cyclic list
