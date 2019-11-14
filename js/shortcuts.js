@@ -30,7 +30,10 @@ class Shortcuts{
             'incLevel' : 'tab',
             'decLevel' : 'shift+tab',
             'delRow' : 'del',
-            'bacRow' : 'backspace'
+            'bacRow' : 'backspace',
+            'fileNew' : 'ctrl+n',
+            'fileSave' : 'ctrl+s',
+            'fileOpen' : 'ctrl+o'
         }
         this.setKey_newRow(this.shortcuts['newRow']);
         this.setKey_downRow(this.shortcuts['downRow']);
@@ -39,6 +42,9 @@ class Shortcuts{
         this.setKey_decLevel(this.shortcuts['decLevel']);
         this.setKey_delRow(this.shortcuts['delRow']);
         this.setKey_bacRow(this.shortcuts['bacRow']);
+        this.setKey_fileNew(this.shortcuts['fileNew']);
+        this.setKey_fileSave(this.shortcuts['fileSave']);
+        this.setKey_fileOpen(this.shortcuts['fileOpen']);
     }
     
     // // Depricated code Likely won't use again 
@@ -139,6 +145,36 @@ class Shortcuts{
             }
         });
 
+    }
+    
+    setKey_fileNew(key){
+        Mousetrap.unbind(this.shortcuts['fileNew']);
+        this.shortcuts['fileNew'] = key;
+        Mousetrap.bind(key, function(e) {
+            sh.keyPressed = 1;
+            event.preventDefault();
+            menuNew();
+        });
+    }
+    
+    setKey_fileSave(key){
+        Mousetrap.unbind(this.shortcuts['fileSave']);
+        this.shortcuts['fileSave'] = key;
+        Mousetrap.bind(key, function(e) {
+            sh.keyPressed = 1;
+            event.preventDefault();
+            menuSave();
+        });
+    }
+    
+    setKey_fileOpen(key){
+        Mousetrap.unbind(this.shortcuts['fileOpen']);
+        this.shortcuts['fileOpen'] = key;
+        Mousetrap.bind(key, function(e) {
+            sh.keyPressed = 1;
+            event.preventDefault();
+            menuOpen();
+        });
     }
 
   }

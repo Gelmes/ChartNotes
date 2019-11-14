@@ -37,7 +37,7 @@ function menuSaveAs(){
            saveToFile(fileName);
        }
     } catch (e) {
-        console.log('Save as canceled'); 
+        console.log('Save as was canceled'); 
     }
 }
 

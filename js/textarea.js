@@ -173,7 +173,6 @@ class TextArea{
     for (var key in dict){
       if(except.indexOf(key) < 0){
         this[key] = dict[key];
-        console.log(key);
       }    
     }
   }
