@@ -2,6 +2,7 @@
 var $ = require("jquery");
 
 TAB_WIDTH = 2;
+TAB_WIDTH_OG = 0.5;
 
 class TextRow{
     constructor(options) {
@@ -84,11 +85,11 @@ class TextRow{
   }
 
   addTab(){
-    this.content.css("padding-left", (this.level * TAB_WIDTH) + "em");
+    this.content.css("padding-left", (this.level * TAB_WIDTH + TAB_WIDTH_OG) + "em");
   }
 
   removeTab(){
-    this.content.css("padding-left", (this.level * TAB_WIDTH) + "em");
+    this.content.css("padding-left", (this.level * TAB_WIDTH + TAB_WIDTH_OG) + "em");
   }
 
   increaseLevel(){
