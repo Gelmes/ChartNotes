@@ -11,7 +11,8 @@ class Shortcuts{
             'upRow' : 'up',
             'incLevel' : 'tab',
             'decLevel' : 'shift+tab',
-            'delRow' : 'del'
+            'delRow' : 'del',
+            'bacRow' : 'backspace'
         }
         this.setKey_newRow(this.shortcuts['newRow']);
         this.setKey_downRow(this.shortcuts['downRow']);
@@ -19,6 +20,7 @@ class Shortcuts{
         this.setKey_incLevel(this.shortcuts['incLevel']);
         this.setKey_decLevel(this.shortcuts['decLevel']);
         this.setKey_delRow(this.shortcuts['delRow']);
+        this.setKey_bacRow(this.shortcuts['bacRow']);
     }
     
     // // Depricated code Likely won't use again 
@@ -93,17 +95,26 @@ class Shortcuts{
         });
     }
     setKey_delRow(key){
-        try{
-            Mousetrap.unbind(this.shortcuts['delLevel']);
-        } catch (e){
-            //console.log(e);
-        }
-        
-        this.shortcuts['delLevel'] = key;
+
+        Mousetrap.unbind(this.shortcuts['delRow']);
+        this.shortcuts['delRow'] = key;
         Mousetrap.bind(key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
             ta.deleteRow();
+        });
+
+    }
+    setKey_bacRow(key){
+        Mousetrap.unbind(this.shortcuts['bacRow']);
+        this.shortcuts['bacRow'] = key;
+        Mousetrap.bind(key, function(e) {
+            sh.keyPressed = 1;
+            var position = window.getSelection().getRangeAt(0).startOffset;
+            if(position == 0){
+                event.preventDefault();
+                ta.deleteRow();
+            }
         });
 
     }
