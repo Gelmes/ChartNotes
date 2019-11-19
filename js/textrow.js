@@ -61,7 +61,8 @@ class TextRow{
   }
 
   genRowHtml(id){
-    return "<div id='" + id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'>row</div>";
+    // return "<div id='" + id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'>row</div>";
+    return "<div id='" + id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'></div>";
   }
 
   addRowAt(index){
@@ -69,7 +70,9 @@ class TextRow{
         this.parent.content.prepend(this.genRowHtml(this.id));  
         this.content =  $(this.parent.element + " #" + this.id);
       }  else {
-        $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div id='" + this.id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'>row " + this.id + "</div>");
+        //$(this.parent.element + " > :nth-child(" + (index) + ")").after("<div id='" + this.id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'>row " + this.id + "</div>");
+        $(this.parent.element + " > :nth-child(" + (index) + ")").after("<div id='" + this.id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'></div>");
+
         this.content =  $(this.parent.element + " > :nth-child(" + (index+1) + ")");
         
       }
@@ -123,8 +126,8 @@ class TextRow{
       range.collapse(true);
       sel.removeAllRanges();
       sel.addRange(range);
-      el.focus();
     }
+    el.focus();
   }
 
   setCaretToEnd(){
