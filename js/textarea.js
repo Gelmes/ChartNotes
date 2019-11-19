@@ -175,6 +175,8 @@ class TextArea{
         this[key] = dict[key];
       }    
     }
+    this.setTargetRow(this.rows.length-1);
+    this.rows[this.getTargetRow()].setCaretToEnd();
   }
 }
 
