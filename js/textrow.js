@@ -98,7 +98,6 @@ class TextRow{
   }
 
   setStatus(stat){
-    console.log("New Status: " + stat);
     this.status = stat;
   }
   getStatus(stat){
