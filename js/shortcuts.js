@@ -138,10 +138,14 @@ class Shortcuts{
             if(position == 0){
                 event.preventDefault();
                 var target = ta.getTargetRow();
-                ta.deleteRow();
-                if(target < ta.rows.length){
-                    ta.goUp();
-                }
+                if(ta.rows[target].level){
+                    ta.decreaseLevel();
+                } else {
+                    ta.deleteRow();
+                    if(target < ta.rows.length){
+                        ta.goUp();
+                    }
+                }   
             }
         });
 
