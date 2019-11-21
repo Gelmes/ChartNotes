@@ -31,7 +31,7 @@ function saveToFile(fileName){
 
 function menuSaveAs(){
     try{
-       var fileName = dialog.showOpenDialogSync({ title:"Save As", buttonLabel:"Save", properties: ['openFile','promptToCreate '] })[0];
+       var fileName = dialog.showOpenDialogSync({ title:"Save As", buttonLabel:"Save", properties: ['openFile','promptToCreate'] })[0];
        if(fileName){
            WORKING_FILE = fileName;
            saveToFile(fileName);
