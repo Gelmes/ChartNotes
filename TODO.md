@@ -11,7 +11,7 @@ Work Breakdown
             TextRow(Div) DONE
         Keyboard inputs to consider
             Space
-            Backspace
+            Backspace                
             Enter
             Up Down
             Left Right
