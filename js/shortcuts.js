@@ -34,7 +34,9 @@ class Shortcuts{
             'fileNew' : 'ctrl+n',
             'fileSave' : 'ctrl+s',
             'fileOpen' : 'ctrl+o',
-            'tagIter' : 'ctrl+t'
+            'tagIter' : 'ctrl+t',
+            'downRowShrt' : 'ctrl+j',
+            'upRowShrt' : 'ctrl+k'
         }
         this.setKey_newRow(this.shortcuts['newRow']);
         this.setKey_downRow(this.shortcuts['downRow']);
@@ -47,6 +49,8 @@ class Shortcuts{
         this.setKey_fileSave(this.shortcuts['fileSave']);
         this.setKey_fileOpen(this.shortcuts['fileOpen']);
         this.setKey_tagIter(this.shortcuts['tagIter']);
+        this.setKey_downRowShrt(this.shortcuts['downRowShrt']);
+        this.setKey_upRowShrt(this.shortcuts['upRowShrt']);
     }
     
     // // Depricated code Likely won't use again 
@@ -74,55 +78,49 @@ class Shortcuts{
     // handleTab(){
     //     this.texbox.increaseLevel();
     // }
+    configureKey(command, key, callback){
+        Mousetrap.unbind(this.shortcuts[command]);
+        this.shortcuts[command] = key;
+        Mousetrap.bind(key, function(e) {
+            callback();
+        });
+    }
 
     setKey_newRow(key){
-        Mousetrap.unbind(this.shortcuts['newRow']);
-        this.shortcuts['newRow'] = key;
-        Mousetrap.bind(key, function(e) {
+        this.configureKey('newRow', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
             ta.appendRow();
         });
     }
-    setKey_downRow(key){
-        Mousetrap.unbind(this.shortcuts['downRow']);
-        this.shortcuts['downRow'] = key;
-        Mousetrap.bind(key, function(e) {
+    setKey_downRow(key){            
+        this.configureKey('downRow', key, function(e) {
             event.preventDefault();
             ta.goDown();
         });
     }
     setKey_upRow(key){
-        Mousetrap.unbind(this.shortcuts['upRow']);
-        this.shortcuts['upRow'] = key;
-        Mousetrap.bind(key, function(e) {
+        this.configureKey('upRow', key, function(e) {
             event.preventDefault();
             ta.goUp();
         });
     }
     setKey_incLevel(key){
-        Mousetrap.unbind(this.shortcuts['incLevel']);
-        this.shortcuts['incLevel'] = key;
-        Mousetrap.bind(key, function(e) {
+        this.configureKey('incLevel', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
             ta.increaseLevel();
         });
     }
     setKey_decLevel(key){
-        Mousetrap.unbind(this.shortcuts['decLevel']);
-        this.shortcuts['decLevel'] = key;
-        Mousetrap.bind(key, function(e) {
+        this.configureKey('decLevel', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
             ta.decreaseLevel();
         });
     }
     setKey_delRow(key){
-
-        Mousetrap.unbind(this.shortcuts['delRow']);
-        this.shortcuts['delRow'] = key;
-        Mousetrap.bind(key, function(e) {
+        this.configureKey('delRow', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
             ta.deleteRow();
@@ -130,9 +128,7 @@ class Shortcuts{
 
     }
     setKey_bacRow(key){
-        Mousetrap.unbind(this.shortcuts['bacRow']);
-        this.shortcuts['bacRow'] = key;
-        Mousetrap.bind(key, function(e) {
+        this.configureKey('bacRow', key, function(e) {
             sh.keyPressed = 1;
             var position = window.getSelection().getRangeAt(0).startOffset;
             if(position == 0){
@@ -152,39 +148,44 @@ class Shortcuts{
     }
     
     setKey_fileNew(key){
-        Mousetrap.unbind(this.shortcuts['fileNew']);
-        this.shortcuts['fileNew'] = key;
-        Mousetrap.bind(key, function(e) {
+        this.configureKey('fileNew', key, function(e) {
             event.preventDefault();
             menuNew();
         });
     }
     
     setKey_fileSave(key){
-        Mousetrap.unbind(this.shortcuts['fileSave']);
-        this.shortcuts['fileSave'] = key;
-        Mousetrap.bind(key, function(e) {
+        this.configureKey('fileSave', key, function(e) {
             event.preventDefault();
             menuSave();
         });
     }
     
     setKey_fileOpen(key){
-        Mousetrap.unbind(this.shortcuts['fileOpen']);
-        this.shortcuts['fileOpen'] = key;
-        Mousetrap.bind(key, function(e) {
+        this.configureKey('fileOpen', key, function(e) {
             event.preventDefault();
             menuOpen();
         });
     }
     
     setKey_tagIter(key){
-        Mousetrap.unbind(this.shortcuts['tagIter']);
-        this.shortcuts['tagIter'] = key;
-        Mousetrap.bind(key, function(e) {
+        this.configureKey('tagIter', key, function(e) {
             event.preventDefault();
-            // get current row tag
             ta.setNextStatus(); // Sets the current rows tag to the next tag
+        });
+    }
+    
+    setKey_downRowShrt(key){            
+        this.configureKey('downRowShrt', key, function(e) {
+            event.preventDefault();
+            ta.goDown();
+        });
+    }
+
+    setKey_upRowShrt(key){            
+        this.configureKey('upRowShrt', key, function(e) {
+            event.preventDefault();
+            ta.goUp();
         });
     }
 
