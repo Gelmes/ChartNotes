@@ -1,5 +1,8 @@
 const TextRow = require("./textrow.js");
 var $ = require("jquery");
+var Options = require("./options.js");
+
+var status = new Options();
 
 class TextArea{
   constructor(element) {
@@ -57,6 +60,17 @@ class TextArea{
 
   setCaretToEnd(){
     this.rows[this.getTargetRow()].setCaretToEnd();
+  }
+
+  setNextStatus(){
+    const targetRow = this.getTargetRow();
+    let   index = status.keys.indexOf(this.rows[targetRow].getStatus()) + 1; // Next Key
+    if(index == -1){ index = 0;}                  // If the row does not have a status assigned
+    if(index >= status.keys.length){ index = 0;}  // If the next index is outside of the list loop back
+    const key = status.keys[index];
+
+    this.rows[targetRow].setStatus(key);
+    this.rows[targetRow].setBackgroundColor(status.list[key].color);
   }
 
   getTargetRow(value){
@@ -167,6 +181,10 @@ class TextArea{
       }
       this.rows[0].index = dict["rows"][i].index;
       this.rows[0].id = dict["rows"][i].id;
+      if(dict["rows"][i].status){
+        this.rows[0].status = dict["rows"][i].status;
+        this.rows[0].setBackgroundColor(status.list[this.rows[0].status].color);
+      }
     }
 
     var except = ["rows"];

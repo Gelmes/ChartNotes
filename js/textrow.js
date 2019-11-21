@@ -15,7 +15,9 @@ class TextRow{
         content: null,
         index: null,
         id: 0,
-        level: 0
+        level: 0,
+        tags: [],
+        status: ""
       };
 
       // Copies the passed values to the default value list
@@ -81,6 +83,30 @@ class TextRow{
       } else{
         this.content.show();
       }
+  }
+
+  addTag(tag){
+
+    this.tags.push(tag);
+  }
+
+  removeTag(tag){
+    const index = this.tags.indexOf(tag);
+    if(index !== -1){
+      this.tags.splice(index,1);
+    }
+  }
+
+  setStatus(stat){
+    console.log("New Status: " + stat);
+    this.status = stat;
+  }
+  getStatus(stat){
+    return this.status;
+  }
+
+  setBackgroundColor(color){
+    this.content.css("background-color", color);
   }
 
   delete(){

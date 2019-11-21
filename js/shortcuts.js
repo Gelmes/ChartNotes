@@ -33,7 +33,8 @@ class Shortcuts{
             'bacRow' : 'backspace',
             'fileNew' : 'ctrl+n',
             'fileSave' : 'ctrl+s',
-            'fileOpen' : 'ctrl+o'
+            'fileOpen' : 'ctrl+o',
+            'tagIter' : 'ctrl+t'
         }
         this.setKey_newRow(this.shortcuts['newRow']);
         this.setKey_downRow(this.shortcuts['downRow']);
@@ -45,6 +46,7 @@ class Shortcuts{
         this.setKey_fileNew(this.shortcuts['fileNew']);
         this.setKey_fileSave(this.shortcuts['fileSave']);
         this.setKey_fileOpen(this.shortcuts['fileOpen']);
+        this.setKey_tagIter(this.shortcuts['tagIter']);
     }
     
     // // Depricated code Likely won't use again 
@@ -169,6 +171,16 @@ class Shortcuts{
         Mousetrap.bind(key, function(e) {
             event.preventDefault();
             menuOpen();
+        });
+    }
+    
+    setKey_tagIter(key){
+        Mousetrap.unbind(this.shortcuts['tagIter']);
+        this.shortcuts['tagIter'] = key;
+        Mousetrap.bind(key, function(e) {
+            event.preventDefault();
+            // get current row tag
+            ta.setNextStatus(); // Sets the current rows tag to the next tag
         });
     }
 

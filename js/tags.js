@@ -1,4 +1,4 @@
-class Tag{
+class option{
    constructor(){
        this.name = "";
        this.color = "0x00FF00";
@@ -6,32 +6,35 @@ class Tag{
    } 
 }
 
-class Tags{
+class Options{
     constructor(){
-        this.tagValues = {};
-        this.tagKeys = [];
-        this.addTag("Not Started");
-        this.setTagColor("Not Started", "rgba(255,0,26,0.2)")
-        this.addTag("In Progress");
-        this.setTagColor("In Progress", "rgba(233,168,0,0.2)")
-        this.addTag("Complete");
-        this.setTagColor("Complete", "rgba(0,135,107,0.2)")
+        this.optionValues = {};
+        this.optionKeys = [];
+        this.addOption("Not Started");
+        this.setOptionColor("Not Started", "rgba(255,0,26,0.2)")
+        this.addOption("In Progress");
+        this.setOptionColor("In Progress", "rgba(233,168,0,0.2)")
+        this.addOption("Complete");
+        this.setOptionColor("Complete", "rgba(0,135,107,0.2)")
     }
-    addTag(tag){
-        this.tagList[tag] = new Tag();
-        this.tagKeys.push(tag);
+    addOption(option){
+        this.optionList[option] = new Option();
+        this.optionKeys.push(option);
     }
-    removeTag(tag){
-        delete this.tagList[tag];
-        const index = array.indexOf(tag);
+    removeOption(option){
+        delete this.optionList[option];
+        const index = array.indexOf(option);
         if(index !== -1){
-            this.tagKeys.splice(index,1);
+            this.optionKeys.splice(index,1);
         }
     }
-    setTagColor(tag, color){
-        this.tagList[tag].color = color;
+    setOptionColor(option, color){
+        this.optionList[option].color = color;
     }
-    getTagColor(){
-        return this.tagList[tag].color;
+    getOptionColor(){
+        return this.optionList[option].color;
     }
 }
+
+
+module.exports = Tags;
