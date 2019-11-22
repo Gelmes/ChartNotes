@@ -38,6 +38,7 @@ function menuSaveAs(){
        var fileName = dialog.showSaveDialogSync({ title:"Save As", buttonLabel:"Save"})[0];
        if(fileName){
            WORKING_FILE = fileName;
+           $('title').html(WORKING_FILE);
            saveToFile(fileName);
        }
     } catch (e) {
@@ -63,6 +64,7 @@ function menuOpen(){
                 ta.set(dict);
             }, 250);
             WORKING_FILE = fileName;
+            $('title').html(WORKING_FILE);
             clearFileChanges();
         }
     }
@@ -79,6 +81,7 @@ function menuNew(){
         ta.initRow();
         
         WORKING_FILE = "";
+        $('title').html('Untitled');
         $(".title").html("Untitled *");
     }
     catch(e) { 
