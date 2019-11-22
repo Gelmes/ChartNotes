@@ -9,6 +9,7 @@ function createWindow () {
   win = new BrowserWindow({
     width: 1920,
     height: 1060,
+    icon: 'notepad.png',
     webPreferences: {
       nodeIntegration: true
     },
