@@ -36,7 +36,9 @@ class Shortcuts{
             'fileOpen' : 'ctrl+o',
             'tagIter' : 'ctrl+t',
             'downRowShrt' : 'ctrl+j',
-            'upRowShrt' : 'ctrl+k'
+            'upRowShrt' : 'ctrl+k',
+            'zoomIn' : 'ctrl+-',
+            'zoomOut' : 'ctrl+='
         }
         this.setKey_newRow(this.shortcuts['newRow']);
         this.setKey_downRow(this.shortcuts['downRow']);
@@ -51,6 +53,8 @@ class Shortcuts{
         this.setKey_tagIter(this.shortcuts['tagIter']);
         this.setKey_downRowShrt(this.shortcuts['downRowShrt']);
         this.setKey_upRowShrt(this.shortcuts['upRowShrt']);
+        this.setKey_zoomIn(this.shortcuts['zoomIn']);
+        this.setKey_zoomOut(this.shortcuts['zoomOut']);
     }
     
     // // Depricated code Likely won't use again 
@@ -186,6 +190,30 @@ class Shortcuts{
         this.configureKey('upRowShrt', key, function(e) {
             event.preventDefault();
             ta.goUp();
+        });
+    }
+
+    setKey_zoomIn(key){            
+        this.configureKey('zoomIn', key, function(e) {
+            let size = ta.content.css('font-size');
+            size.split("px");
+            size = parseInt(size);
+            size -= 1;
+            if(size < 10){size = 10;}
+            ta.content.css('font-size', size +'px');
+            event.preventDefault();
+        });
+    }
+
+    setKey_zoomOut(key){            
+        this.configureKey('zoomOut', key, function(e) {
+            let size = ta.content.css('font-size');
+            size.split("px");
+            size = parseInt(size);
+            size += 1;
+            if(size > 40){size = 40;}
+            ta.content.css('font-size', size+'px');
+            event.preventDefault();
         });
     }
 
