@@ -7,6 +7,10 @@ var path = require('path');
 var $ = require("jquery");
 
 function saveToFile(fileName){
+    let ext = path.extname(fileName);
+    if(ext == ''){
+        fileName += '.chn';
+    }
     var dict = {};
     dict = ta.get();
     var ditc_obj = {};
@@ -31,7 +35,7 @@ function saveToFile(fileName){
 
 function menuSaveAs(){
     try{
-       var fileName = dialog.showOpenDialogSync({ title:"Save As", buttonLabel:"Save", properties: ['openFile','promptToCreate'] })[0];
+       var fileName = dialog.showSaveDialogSync({ title:"Save As", buttonLabel:"Save"})[0];
        if(fileName){
            WORKING_FILE = fileName;
            saveToFile(fileName);
