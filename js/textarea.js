@@ -53,13 +53,27 @@ class TextArea{
   }
 
   moveRowUp(){
-    let row = this.rows[this.getTargetRow()];
-    row.content.prev().insertAfter(row.content);
+    let targetRow = this.getTargetRow();
+    if(targetRow != 0){
+      let row = this.rows[targetRow];
+      row.content.prev().insertAfter(row.content);
+      let preRow = this.rows[targetRow - 1];
+      this.rows[targetRow - 1] = this.rows[targetRow];
+      this.rows[targetRow] = preRow;
+      this.setTargetRow(targetRow - 1);
+    }
   }
 
   moveRowDown(){
-    let row = this.rows[this.getTargetRow()];
-    row.content.next().insertBefore(row.content);
+    let targetRow = this.getTargetRow();
+    if(targetRow != this.rows.length){
+      let row = this.rows[targetRow];
+      row.content.next().insertBefore(row.content);
+      let nextRow = this.rows[targetRow + 1];
+      this.rows[targetRow + 1] = this.rows[targetRow];
+      this.rows[targetRow] = nextRow;
+      this.setTargetRow(targetRow + 1);
+    }
   }
 
   setTargetRow(value){
