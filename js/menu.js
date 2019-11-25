@@ -35,7 +35,7 @@ function saveToFile(fileName){
 
 function menuSaveAs(){
     try{
-       var fileName = dialog.showSaveDialogSync({ title:"Save As", buttonLabel:"Save"})[0];
+       var fileName = dialog.showSaveDialogSync({ title:"Save As", buttonLabel:"Save"});
        if(fileName){
            WORKING_FILE = fileName;
            $('title').html(WORKING_FILE);
