@@ -45,7 +45,7 @@ function menuSaveAs(){
        var fileName = dialog.showSaveDialogSync({ title:"Save As", buttonLabel:"Save"});
        if(fileName){
            WORKING_FILE = fileName;
-           $('title').html(WORKING_FILE);
+           $('title').html(path.basename(WORKING_FILE));
            saveToFile(fileName);
        }
     } catch (e) {
@@ -75,7 +75,7 @@ function openFile(fileName){
                 ta.set(dict);
             }, 250);
             WORKING_FILE = fileName;
-            $('title').html(WORKING_FILE);
+            $('title').html(path.basename(WORKING_FILE));
             clearFileChanges();
         }
     }
