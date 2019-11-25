@@ -38,7 +38,9 @@ class Shortcuts{
             'downRowShrt' : 'ctrl+j',
             'upRowShrt' : 'ctrl+k',
             'zoomIn' : 'ctrl+-',
-            'zoomOut' : 'ctrl+='
+            'zoomOut' : 'ctrl+=',
+            'moveRowDown' : 'alt+down',
+            'moveRowUp' : 'alt+up'
         }
         this.setKey_newRow(this.shortcuts['newRow']);
         this.setKey_downRow(this.shortcuts['downRow']);
@@ -55,6 +57,8 @@ class Shortcuts{
         this.setKey_upRowShrt(this.shortcuts['upRowShrt']);
         this.setKey_zoomIn(this.shortcuts['zoomIn']);
         this.setKey_zoomOut(this.shortcuts['zoomOut']);
+        this.setKey_moveRowDown(this.shortcuts['moveRowDown']);
+        this.setKey_moveRowUp(this.shortcuts['moveRowUp']);
     }
     
     // // Depricated code Likely won't use again 
@@ -214,6 +218,20 @@ class Shortcuts{
             if(size > 40){size = 40;}
             ta.content.css('font-size', size+'px');
             event.preventDefault();
+        });
+    }
+
+    setKey_moveRowDown(key){            
+        this.configureKey('moveRowDown', key, function(e) {
+            event.preventDefault();
+            ta.moveRowDown();
+        });
+    }
+
+    setKey_moveRowUp(key){            
+        this.configureKey('moveRowUp', key, function(e) {
+            event.preventDefault();
+            ta.moveRowUp();
         });
     }
 

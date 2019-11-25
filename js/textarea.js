@@ -52,6 +52,16 @@ class TextArea{
     
   }
 
+  moveRowUp(){
+    let row = this.rows[this.getTargetRow()];
+    row.content.prev().insertAfter(row.content);
+  }
+
+  moveRowDown(){
+    let row = this.rows[this.getTargetRow()];
+    row.content.next().insertBefore(row.content);
+  }
+
   setTargetRow(value){
     if(value < this.rows.length && value >= 0){
       this.targetRowIndex = value;
