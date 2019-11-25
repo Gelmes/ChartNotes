@@ -12,6 +12,7 @@ $("html").click(function (){
     ta.setCaretToEnd();
 });
 
+
 module.exports = {
     ta,
     sh

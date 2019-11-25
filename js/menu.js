@@ -1,10 +1,17 @@
 // Min functions that are called by the menu system
 // Exit, Minimize, and Close functions can be found in titlebar.js
 
-const { dialog } = require('electron').remote;
+const { dialog, getGlobal } = require('electron').remote;
 var fs = require('fs');
 var path = require('path');
 var $ = require("jquery");
+
+$( document ).ready(function() {
+    arguments = getGlobal('sharedObject').prop1;
+    if(arguments.length == 2 && arguments[1] != "."){
+        openFile(arguments[1]);
+    }    
+});
 
 function saveToFile(fileName){
     let ext = path.extname(fileName);
@@ -55,8 +62,12 @@ function menuSave(){
 }
 
 function menuOpen(){
+    var fileName = dialog.showOpenDialogSync({ properties: ['openFile'] })[0];
+    openFile(fileName);
+
+}
+function openFile(fileName){
     try {
-        var fileName = dialog.showOpenDialogSync({ properties: ['openFile'] })[0];
         if(fileName){
             var data = fs.readFileSync(fileName);
             var dict = JSON.parse(data);            
@@ -69,8 +80,8 @@ function menuOpen(){
         }
     }
     catch(e) { 
-        console.log('Failed to open the file !'); 
-        //console.log(e);
+        console.log('Failed to open the file: ' + fileName); 
+        console.log(e);
     }
 
 }
@@ -90,3 +101,6 @@ function menuNew(){
     }
 
 }
+
+
+module.exports = openFile;

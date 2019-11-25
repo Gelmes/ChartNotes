@@ -117,6 +117,8 @@ class TextRow{
 
   delete(){
     this.content.remove();
+    this.content = null;
+    this.parent = null;
   }
 
   addTab(){
