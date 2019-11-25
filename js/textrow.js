@@ -17,7 +17,8 @@ class TextRow{
         id: 0,
         level: 0,
         tags: [],
-        status: ""
+        status: "",
+        bgColor: ""
       };
 
       // Copies the passed values to the default value list
@@ -34,7 +35,8 @@ class TextRow{
       if (this.index != null){ this.addRowAt(this.index); } 
       else { this.parent.content.html(this.genRowHtml(this.id)); }
 
-      this.content.focusin(() => {this.setAsTarget();});
+      this.content.focusin (() => {this.setAsTarget(); });
+      this.content.focusout(() => {});
 
       // Set tabs according to set level
       if(this.level){
@@ -106,6 +108,11 @@ class TextRow{
 
   setBackgroundColor(color){
     this.content.css("background-color", color);
+    this.bgColor = color;
+  }
+
+  resetBackgroundColor(){
+    this.content.css("background-color", this.bgColor);
   }
 
   delete(){

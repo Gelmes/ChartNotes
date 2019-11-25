@@ -91,6 +91,12 @@ body{
     margin: 1px 10px;
 }
 
+.textrow:focus{
+    background-color: #e0e0e0;
+    /* outline-width: 1px;
+    outline-color: rgba(255, 123, 0, 0.5); */
+}
+
 .tab{
     width: 2em;
     height:1em;
