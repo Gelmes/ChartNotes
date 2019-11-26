@@ -7,39 +7,41 @@
     <script src="./js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
+
+    
+    <div class="dialog" data-action="toggle">
+        <header class="tips" data-action="toggle">
+          <nav class="drag navbar navbar-expand-sm navbar-light">
+            <button class="no-drag navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="no-drag navbar-nav mr-auto navbar-menu">
+                <!-- <li class="nav-item active">
+                    <button id="min-btn" class="btn   btn-light btn-cleaned">
+                      <img   class="icon btn-cleaned" src="./open-iconic/svg/book.svg" alt="book">
+                    </button>
+                </li> -->
+              </ul>
+            </div>
+  
+              <div class="text-center title">ChartNotes.js</div>
+  
+              <div class="no-drag">
+                <button class="menu-min btn   btn-light btn-cleaned"><img   class="icon" src="./open-iconic/svg/arrow-thick-bottom.svg" alt="arrow-thick-bottom"></button>
+                <button class="menu-max btn   btn-light btn-cleaned"><img   class="icon" src="./open-iconic/svg/fullscreen-enter.svg" alt="fullscreen-enter"></button>
+                <button class="menu-close btn btn-light btn-cleaned"><img class="icon" src="./open-iconic/svg/x.svg" alt="x"></button>
+              </div>
+  
+          </nav>
+        </header>
+      </div>
   </head>
   <body>
-    <div class="dialog" data-action="toggle">
-      <header class="tips" data-action="toggle">
-        <nav class="drag navbar navbar-expand-sm navbar-light">
-          <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="no-drag navbar-nav mr-auto navbar-menu">
-              <!-- <li class="nav-item active">
-                  <button id="min-btn" class="btn   btn-light btn-cleaned">
-                    <img   class="icon btn-cleaned" src="./open-iconic/svg/book.svg" alt="book">
-                  </button>
-              </li> -->
-            </ul>
-
-            <div class="text-center title">ChartNotes.js</div>
-
-            <div class="no-drag">
-              <button class="menu-min btn   btn-light btn-cleaned"><img   class="icon" src="./open-iconic/svg/arrow-thick-bottom.svg" alt="arrow-thick-bottom"></button>
-              <button class="menu-max btn   btn-light btn-cleaned"><img   class="icon" src="./open-iconic/svg/fullscreen-enter.svg" alt="fullscreen-enter"></button>
-              <button class="menu-close btn btn-light btn-cleaned"><img class="icon" src="./open-iconic/svg/x.svg" alt="x"></button>
-            </div>
-
-          </div>
-        </nav>
-      </header>
-    </div>
 
     </br></br>
 
@@ -60,13 +62,17 @@
       └─ Avocado</textarea>
     <input type="button" value="Click Me" onclick="getPosition();"> -->
   
-    <script>
+    <!-- <script>
       window.$ = window.jQuery = require('jquery');
       window.Bootstrap = require('bootstrap');
-    </script>
+      </script> -->
     <script src="./index.js"></script>
     <script src="./js/menu.js"></script>
     <script src="./js/filename.js"></script>
     <script src="./js/titlebar.js"></script>
+    <script>
+      window.$ = window.jQuery = require('jquery');
+      window.Bootstrap = require('bootstrap');
+      </script>
   </body>
 </html>
