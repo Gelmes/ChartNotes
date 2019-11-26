@@ -178,6 +178,7 @@ class Shortcuts{
     
     setKey_tagIter(key){
         this.configureKey('tagIter', key, function(e) {
+            sh.keyPressed = 1;
             event.preventDefault();
             ta.setNextStatus(); // Sets the current rows tag to the next tag
         });
@@ -223,6 +224,7 @@ class Shortcuts{
 
     setKey_moveRowDown(key){            
         this.configureKey('moveRowDown', key, function(e) {
+            sh.keyPressed = 1;
             event.preventDefault();
             ta.moveRowDown();
         });
@@ -230,6 +232,7 @@ class Shortcuts{
 
     setKey_moveRowUp(key){            
         this.configureKey('moveRowUp', key, function(e) {
+            sh.keyPressed = 1;
             event.preventDefault();
             ta.moveRowUp();
         });
