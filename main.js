@@ -1,5 +1,9 @@
 const { app, BrowserWindow } = require('electron');
 
+// Stop app from launching during installation
+// see: https://www.npmjs.com/package/@electron-forge/maker-squirrel
+if (require('electron-squirrel-startup')) return app.quit();
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win

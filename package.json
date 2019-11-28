@@ -1,22 +1,66 @@
 {
   "name": "chartnotes",
-  "version": "1.0.0",
-  "description": "",
+  "productName": "ChartNotes",
+  "version": "0.0.1",
+  "description": "An app to easaly create quick notes and charts using a simple interface with quick shortcuts.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "jest --watch --collect-coverage"
+    "test": "jest --watch --collect-coverage",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
   },
-  "author": "",
+  "keywords": [],
+  "author": {
+    "name": "Gelmes",
+    "email": "marco.firsteye@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "electron": "^6.0.12",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "@electron-forge/cli": "^6.0.0-beta.45",
+    "@electron-forge/maker-deb": "^6.0.0-beta.45",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.45",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.45",
+    "@electron-forge/maker-zip": "^6.0.0-beta.45"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "mousetrap": "^1.6.3",
-    "popper.js": "^1.16.0"
+    "popper.js": "^1.16.0",
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "setupMsi":"Setup.msi",
+            "setupIcon":"notepad.ico",
+            "noMsi":false
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }
