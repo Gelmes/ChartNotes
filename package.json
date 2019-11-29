@@ -1,5 +1,5 @@
 {
-  "name": "chartnotes",
+  "name": "ChartNotes",
   "productName": "ChartNotes",
   "version": "0.0.1",
   "description": "An app to easaly create quick notes and charts using a simple interface with quick shortcuts.",
@@ -36,13 +36,14 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "icon": "img/notepad.ico"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "setupMsi":"Setup.msi",
-            "setupIcon":"notepad.ico",
+            "setupIcon":"img/notepad.ico",
             "noMsi":false
           }
         },
