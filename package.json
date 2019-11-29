@@ -20,12 +20,7 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^6.0.12",
-    "jest": "^24.9.0",
-    "@electron-forge/cli": "^6.0.0-beta.45",
-    "@electron-forge/maker-deb": "^6.0.0-beta.45",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.45",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.45",
-    "@electron-forge/maker-zip": "^6.0.0-beta.45"
+    "jest": "^24.9.0"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
@@ -33,35 +28,5 @@
     "mousetrap": "^1.6.3",
     "popper.js": "^1.16.0",
     "electron-squirrel-startup": "^1.0.0"
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {
-        "icon": "img/notepad.ico"
-      },
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "setupIcon":"img/notepad.ico",
-            "noMsi":false
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
   }
 }
