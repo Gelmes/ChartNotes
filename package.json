@@ -8,7 +8,7 @@
     "start": "electron .",
     "test": "jest --watch --collect-coverage",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder --win"
   },
   "keywords": [],
   "author": {
@@ -30,7 +30,28 @@
   },
   "build": {
     "appId": "com.electron.chartnotes",
-    "win": {},
+    "productName": "ChartNotes",
+    "asar": true,
+    "fileAssociations": [
+      {
+        "name": "ChartNotes",
+        "description": "ChartNotes file",
+        "ext": [
+          "chn"
+        ]
+      }
+    ],
+    "win": {
+      "icon":"img/notepad.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "deleteAppDataOnUninstall": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ChartNotes",
+      "runAfterFinish": false
+    },
     "mac": {
       "category": "your.app.category.type"
     }
