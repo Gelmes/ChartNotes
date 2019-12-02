@@ -1,6 +1,4 @@
-
-var $ = require("jquery");
-
+console.log("Importing: ", "textrow.js");
 TAB_WIDTH = 2;
 TAB_WIDTH_OG = 0.5;
 
@@ -17,7 +15,7 @@ class TextRow{
         id: 0,
         level: 0,
         tags: [],
-        status: "",
+        rowStatus: "",
         bgColor: ""
       };
 
@@ -100,10 +98,10 @@ class TextRow{
   }
 
   setStatus(stat){
-    this.status = stat;
+    this.rowStatus = stat;
   }
   getStatus(stat){
-    return this.status;
+    return this.rowStatus;
   }
 
   setBackgroundColor(color){
@@ -185,3 +183,4 @@ class TextRow{
 }
 
 module.exports = TextRow;
+console.log("Imported : ", "textrow.js");

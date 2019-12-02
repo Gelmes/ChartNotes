@@ -1,8 +1,4 @@
-const TextArea = require("./js/textarea.js")
-const Shortcuts = require("./js/shortcuts.js")
-var fs = require('fs');
-var $ = require("jquery");
-var path = require('path');
+console.log("Importing: ", "index.js");
 
 var ta = new TextArea(".TextArea");
 var sh = new Shortcuts(ta);
@@ -12,8 +8,4 @@ $("html").click(function (){
     ta.setCaretToEnd();
 });
 
-
-module.exports = {
-    ta,
-    sh
-}
+console.log("Imported : ", "index.js");

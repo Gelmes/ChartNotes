@@ -22,11 +22,8 @@
     "jest": "^24.9.0"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "jquery": "^3.4.1",
-    "mousetrap": "^1.6.3",
-    "popper.js": "^1.16.0",
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "jquery": "^3.4.1"
   },
   "build": {
     "appId": "com.electron.chartnotes",
@@ -42,7 +39,7 @@
       }
     ],
     "win": {
-      "icon":"img/notepad.ico"
+      "icon": "img/notepad.ico"
     },
     "nsis": {
       "oneClick": false,
