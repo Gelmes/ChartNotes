@@ -1,4 +1,4 @@
-const Mousetrap = require("mousetrap");
+console.log("Importing: ", "shortcuts.js");
 
 // Helper functions
 function setSelectionRange(input, selectionStart, selectionEnd) {
@@ -241,3 +241,5 @@ class Shortcuts{
   }
   
   module.exports = Shortcuts;
+
+  console.log("Imported : ", "shortcuts.js");

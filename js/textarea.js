@@ -1,8 +1,5 @@
-const TextRow = require("./textrow.js");
-var $ = require("jquery");
-var Options = require("./options.js");
-
-var status = new Options();
+console.log("Importing: ", "textarea.js");
+var rowStatus = new Options();
 
 class TextArea{
   constructor(element) {
@@ -88,13 +85,15 @@ class TextArea{
 
   setNextStatus(){
     const targetRow = this.getTargetRow();
-    let   index = status.keys.indexOf(this.rows[targetRow].getStatus()) + 1; // Next Key
+    console.log(rowStatus);
+    console.log(rowStatus.keys);
+    let   index = rowStatus.keys.indexOf(this.rows[targetRow].getStatus()) + 1; // Next Key
     if(index == -1){ index = 0;}                  // If the row does not have a status assigned
-    if(index >= status.keys.length){ index = 0;}  // If the next index is outside of the list loop back
-    const key = status.keys[index];
+    if(index >= rowStatus.keys.length){ index = 0;}  // If the next index is outside of the list loop back
+    const key = rowStatus.keys[index];
 
     this.rows[targetRow].setStatus(key);
-    this.rows[targetRow].setBackgroundColor(status.list[key].color);
+    this.rows[targetRow].setBackgroundColor(rowStatus.list[key].color);
   }
 
   getTargetRow(value){
@@ -205,9 +204,9 @@ class TextArea{
       }
       this.rows[0].index = dict["rows"][i].index;
       this.rows[0].id = dict["rows"][i].id;
-      if(dict["rows"][i].status){
-        this.rows[0].status = dict["rows"][i].status;
-        this.rows[0].setBackgroundColor(status.list[this.rows[0].status].color);
+      if(dict["rows"][i].rowStatus){
+        this.rows[0].rowStatus = dict["rows"][i].rowStatus;
+        this.rows[0].setBackgroundColor(rowStatus.list[this.rows[0].rowStatus].color);
       }
     }
 
@@ -223,3 +222,5 @@ class TextArea{
 }
 
 module.exports = TextArea;
+
+console.log("Imported : ", "textarea.js");

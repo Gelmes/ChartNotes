@@ -1,19 +1,12 @@
-const TextArea = require("./js/textarea.js")
-const Shortcuts = require("./js/shortcuts.js")
-var fs = require('fs');
-var $ = require("jquery");
-var path = require('path');
+console.log("Importing: ", "index.js");
 
 var ta = new TextArea(".TextArea");
 var sh = new Shortcuts(ta);
 
+// NOTE: Causes cursor to go to the end when you try to click a row and edit something in the middle of the row.
 // Clicking on empty space focuses on the current target row
-$("html").click(function (){
-    ta.setCaretToEnd();
-});
+// $("html").click(function (){
+//     ta.setCaretToEnd();
+// });
 
-
-module.exports = {
-    ta,
-    sh
-}
+console.log("Imported : ", "index.js");

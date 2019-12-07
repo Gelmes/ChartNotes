@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf8">
     <title>Hello World!</title>
-    <script src="./js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/jquery-3.4.1.min.js"></script>
 
-    
     <div class="dialog" data-action="toggle">
         <header class="tips" data-action="toggle">
           <nav class="drag navbar navbar-expand-sm navbar-light">
@@ -66,13 +66,20 @@
       window.$ = window.jQuery = require('jquery');
       window.Bootstrap = require('bootstrap');
       </script> -->
-    <script src="./index.js"></script>
-    <script src="./js/menu.js"></script>
-    <script src="./js/filename.js"></script>
-    <script src="./js/titlebar.js"></script>
-    <script>
-      window.$ = window.jQuery = require('jquery');
-      window.Bootstrap = require('bootstrap');
-      </script>
+      
+    <!-- Dependencies and initialization -->    
+    <script type='text/javascript' src="./js/popper.min.js"></script>
+    <script type='text/javascript' src="./js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="./js/options.js"></script>
+    <script type='text/javascript' src="./js/textrow.js"></script>
+    <script type='text/javascript' src="./js/textarea.js"></script>
+    <script type='text/javascript' src="./js/mousetrap.min.js"></script>
+    <script type='text/javascript' src="./js/shortcuts.js"></script>
+    <script type='text/javascript' src="./index.js"></script>
+    <script type='text/javascript' src="./js/filename.js"></script>
+
+    <!-- Only make sense in the context of electron-->
+    <script type='text/javascript' src="./js/menu.js"></script>      
+    <script type='text/javascript' src="./js/titlebar.js"></script>
   </body>
 </html>

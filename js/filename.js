@@ -17,4 +17,6 @@ function clearFileChanges(){
     $(".title").html(path.basename(WORKING_FILE) + " ");
 }
 
-setInterval(checkForFileChanges, 1000);
+$(document).ready(function() {
+    setInterval(checkForFileChanges, 1000);
+});
