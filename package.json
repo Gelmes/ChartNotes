@@ -8,7 +8,8 @@
     "start": "electron .",
     "test": "jest --watch --collect-coverage",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder --win"
+    "dist": "electron-builder --win",
+    "distWin": "electron-builder --win --publish never"
   },
   "keywords": [],
   "author": {
