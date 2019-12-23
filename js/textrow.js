@@ -143,6 +143,7 @@ class TextRow{
 
   focus(){
     this.content.focus();
+    $('html, body').animate({ scrollTop: this.content.offset().top }, 500);
   }
 
   setCaretToPos(pos){
