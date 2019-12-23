@@ -1,3 +1,4 @@
+// const { BrowserWindow } = require('electron').remote;
 console.log("Importing: ", "shortcuts.js");
 
 // Helper functions
@@ -40,7 +41,8 @@ class Shortcuts{
             'zoomIn' : 'ctrl+-',
             'zoomOut' : 'ctrl+=',
             'moveRowDown' : 'alt+down',
-            'moveRowUp' : 'alt+up'
+            'moveRowUp' : 'alt+up',
+            'showHistory' : 'ctrl+h'
         }
         this.setKey_newRow(this.shortcuts['newRow']);
         this.setKey_downRow(this.shortcuts['downRow']);
@@ -59,6 +61,7 @@ class Shortcuts{
         this.setKey_zoomOut(this.shortcuts['zoomOut']);
         this.setKey_moveRowDown(this.shortcuts['moveRowDown']);
         this.setKey_moveRowUp(this.shortcuts['moveRowUp']);
+        this.setKey_showHistory(this.shortcuts['showHistory']);
     }
     
     // // Depricated code Likely won't use again 
@@ -90,6 +93,7 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts[command]);
         this.shortcuts[command] = key;
         Mousetrap.bind(key, function(e) {
+            hist.record(key);
             callback();
         });
     }
@@ -235,6 +239,13 @@ class Shortcuts{
             sh.keyPressed = 1;
             event.preventDefault();
             ta.moveRowUp();
+        });
+    }
+
+    setKey_showHistory(key){        
+        this.configureKey('showHistory', key, function(e) {
+            // BrowserWindow.webContents.openDevTools();
+            console.log(hist.history);
         });
     }
 
