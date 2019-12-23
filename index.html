@@ -42,10 +42,14 @@
       </div>
   </head>
   <body>
-
-    </br></br>
-
-    <div class="TextArea"></div>
+    
+    <div id="content">
+      <div style="position: relative; height: 3em"></div>
+      <div style="position: relative; overflow: auto; height: calc(100vh - 3.5em);">  
+        <div class="TextArea"></div>         
+        <div style="height:2.5em;position: relative;overflow: hidden;"></div>
+      </div>
+    </div>
     <!-- Depricated will be removed in the future -->
     <!-- <h1>Hello World!</h1>
     We are using node <script>document.write(process.versions.node)</script>,

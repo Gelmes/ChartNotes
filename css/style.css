@@ -3,6 +3,7 @@ html{
     height:100%;
     /* background: rgba(0, 0, 0, 0.5); */
     /* border-radius: 10px; */
+    position: relative;
 }
 head{
     width: auto;
@@ -17,6 +18,8 @@ body{
     /* background: #333; */
     font-family: "COURIER";
     font-size: 1em;
+    overflow: hidden;
+    position: relative;
 }
 
 .nav{
@@ -64,6 +67,7 @@ body{
     -webkit-app-region: no-drag;
     border-bottom: 1px solid #eee;
     padding:4px;
+    z-index: 1;
   }
 .tips {
     position: relative;
@@ -78,8 +82,8 @@ body{
 }
 .TextArea{
     display: inline-block;
-    height:100%;
     width:100%;
+    position: relative;
 }
 .textrow{
     display:block;

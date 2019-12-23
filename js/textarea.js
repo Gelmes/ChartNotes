@@ -46,7 +46,7 @@ class TextArea{
     this.rows.splice(index, 0, tr);
     this.setTargetRow(index);
     tr.setCaretToEnd();
-    
+    this.content.css('margin-top','0');
   }
 
   moveRowUp(){
