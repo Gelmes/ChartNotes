@@ -1,4 +1,3 @@
-// const { BrowserWindow } = require('electron').remote;
 console.log("Importing: ", "shortcuts.js");
 
 // Helper functions
@@ -42,7 +41,8 @@ class Shortcuts{
             'zoomOut' : 'ctrl+=',
             'moveRowDown' : 'alt+down',
             'moveRowUp' : 'alt+up',
-            'showHistory' : 'ctrl+h'
+            'showHistory' : 'ctrl+h',
+            'toogleDeveloper' : 'ctrl+d'
         }
         this.setKey_newRow(this.shortcuts['newRow']);
         this.setKey_downRow(this.shortcuts['downRow']);
@@ -62,6 +62,7 @@ class Shortcuts{
         this.setKey_moveRowDown(this.shortcuts['moveRowDown']);
         this.setKey_moveRowUp(this.shortcuts['moveRowUp']);
         this.setKey_showHistory(this.shortcuts['showHistory']);
+        this.setKey_toogleDeveloper(this.shortcuts['toogleDeveloper']);
     }
     
     // // Depricated code Likely won't use again 
@@ -244,8 +245,13 @@ class Shortcuts{
 
     setKey_showHistory(key){        
         this.configureKey('showHistory', key, function(e) {
-            // BrowserWindow.webContents.openDevTools();
             console.log(hist.history);
+        });
+    }
+
+    setKey_toogleDeveloper(key){        
+        this.configureKey('toogleDeveloper', key, function(e) {
+            require('electron').remote.getCurrentWindow().toggleDevTools();
         });
     }
 
