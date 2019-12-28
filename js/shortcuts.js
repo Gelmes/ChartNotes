@@ -94,7 +94,7 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts[command]);
         this.shortcuts[command] = key;
         Mousetrap.bind(key, function(e) {
-            hist.record(key);
+            hist.record(command);
             callback();
         });
     }
