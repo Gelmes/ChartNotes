@@ -8,103 +8,107 @@
 // automatically update themselves with the models contents
 
 
-// newRow
-// downRow
-// upRow
-// incLevel
-// decLevel
-// delRow
-// bacRow
-// fileNew
-// fileSave
-// fileOpen
-// tagIter
-// downRowShrt
-// upRowShrt
-// zoomIn
-// zoomOut
-// moveRowDown
-// moveRowUp
-// showHistory
-// toogleDeveloper
+// newRow           //
+// downRow          //
+// upRow            //
+// incLevel         //
+// decLevel         //
+// delRow           //
+// bacRow           //
+// fileNew          //
+// fileSave         //
+// fileOpen         //
+// tagIter          //
+// downRowShrt      //
+// upRowShrt        // 
+// zoomIn           // 
+// zoomOut          // 
+// moveRowDown      // 
+// moveRowUp        // 
+// showHistory      // 
+// toogleDeveloper  // 
 
 class Controller{
     constructor(){
+        this.models = [];
 
     }
-    
+
+
     newRow(){
-
+        for (model of models){
+            model.newRow();
+        }
     }
-    
+
     downRow(){
 
     }
-    
+
     upRow(){
 
     }
-    
+
     incLevel(){
 
     }
-    
+
     decLevel(){
 
     }
-    
+
     delRow(){
 
     }
-    
+
     bacRow(){
 
     }
-    
+
     fileNew(){
 
     }
-    
+
     fileSave(){
 
     }
-    
+
     fileOpen(){
 
     }
-    
+
     tagIter(){
 
     }
-    
+
     downRowShrt(){
 
     }
-    
+
     upRowShrt(){
 
     }
-    
+
     zoomIn(){
 
     }
-    
+
     zoomOut(){
 
     }
-    
+
     moveRowDown(){
 
     }
-    
+
     moveRowUp(){
 
     }
-    
+
     showHistory(){
 
     }
-    
+
     toogleDeveloper(){
 
     }

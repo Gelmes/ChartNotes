@@ -65,31 +65,7 @@ class Shortcuts{
         this.setKey_toogleDeveloper(this.shortcuts['toogleDeveloper']);
     }
     
-    // // Depricated code Likely won't use again 
-    // handleKeyDown(event){
-    //     console.log("Key: " + event.key);
-    //     switch(event.key){
-    //         case "Enter"    : event.preventDefault(); this.handleEnter(); break;
-    //         case "ArrowDown": event.preventDefault(); this.handleDown (); break;
-    //         case "ArrowUp"  : event.preventDefault(); this.handleUp   (); break;
-    //         default: console.log("Unhandled Key");
-    //     }
-    // }
-    // handleEnter(){
-    //     this.texbox.appendRow();
-    // }
-    
-    // handleDown(){
-    //     this.texbox.goDown();
-    // }
-    
-    // handleUp(){
-    //     this.texbox.goUp();
-    // }
-
-    // handleTab(){
-    //     this.texbox.increaseLevel();
-    // }
+    // This is a common code that sets up mousetrap keyboard shortcuts
     configureKey(command, key, callback){
         Mousetrap.unbind(this.shortcuts[command]);
         this.shortcuts[command] = key;
