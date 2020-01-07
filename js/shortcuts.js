@@ -18,6 +18,7 @@ function setSelectionRange(input, selectionStart, selectionEnd) {
     setSelectionRange(input, pos, pos);
   }
 
+  // TODO: Remove all traces of ta object in this code
 class Shortcuts{
     constructor(texbox) {
         this.keyPressed = 0; // Used to indicate when there are file changes
@@ -79,47 +80,62 @@ class Shortcuts{
         this.configureKey('newRow', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
-            ta.newRow();
+            control.newRow();
         });
     }
     setKey_downRow(key){            
         this.configureKey('downRow', key, function(e) {
             event.preventDefault();
-            ta.downRow();
+            control.downRow();
         });
     }
     setKey_upRow(key){
         this.configureKey('upRow', key, function(e) {
             event.preventDefault();
-            ta.upRow();
+            control.upRow();
         });
     }
     setKey_incLevel(key){
         this.configureKey('incLevel', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
-            ta.increaseLevel();
+            control.increaseLevel();
         });
     }
     setKey_decLevel(key){
         this.configureKey('decLevel', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
-            ta.decreaseLevel();
+            control.decreaseLevel();
         });
     }
     setKey_delRow(key){
         this.configureKey('delRow', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
-            ta.deleteRow();
+            control.deleteRow();
         });
 
     }
     setKey_bacRow(key){
+        // TODO: this implementation needs to get rid of the use of ta
+        // I tried implementing a function deleteRowIfCursorAtStart
+        // but it did not work
         this.configureKey('bacRow', key, function(e) {
             sh.keyPressed = 1;
-            ta.deleteRowIfCursorAtStart();
+            var position = window.getSelection().getRangeAt(0).startOffset;
+            if(position == 0){
+              event.preventDefault();
+              var target = ta.getTargetRow();
+              if(ta.rows[target].level){
+                ta.decreaseLevel();
+              } else{
+                ta.deleteRow();
+                if(target < ta.rows.length){
+                    ta.upRow();
+                }
+              }
+            }
         });
 
     }
@@ -149,21 +165,21 @@ class Shortcuts{
         this.configureKey('tagIter', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
-            ta.nextStatus(); // Sets the current rows tag to the next tag
+            control.nextStatus(); // Sets the current rows tag to the next tag
         });
     }
     
     setKey_downRowShrt(key){            
         this.configureKey('downRowShrt', key, function(e) {
             event.preventDefault();
-            ta.downRow();
+            control.downRow();
         });
     }
 
     setKey_upRowShrt(key){            
         this.configureKey('upRowShrt', key, function(e) {
             event.preventDefault();
-            ta.upRow();
+            control.upRow();
         });
     }
 
@@ -195,7 +211,7 @@ class Shortcuts{
         this.configureKey('moveRowDown', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
-            ta.moveRowDown();
+            control.moveRowDown();
         });
     }
 
@@ -203,7 +219,7 @@ class Shortcuts{
         this.configureKey('moveRowUp', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
-            ta.moveRowUp();
+            control.moveRowUp();
         });
     }
 

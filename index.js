@@ -1,6 +1,9 @@
 console.log("Importing: ", "index.js");
 
 var ta = new TextArea(".TextArea");
+var control = new Controller();
+control.addModel(ta);
+
 var sh = new Shortcuts(ta);
 var hist = new History();
 

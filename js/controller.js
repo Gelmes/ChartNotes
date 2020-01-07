@@ -38,61 +38,61 @@ class Controller{
     }
 
     newRow(){
-        for (model of models){
+        for (let model of this.models){
             model.newRow();
         }
     }
 
     downRow(){
-        for (model of models){
+        for (let model of this.models){
             model.downRow();
         }
     }
 
     upRow(){
-        for (model of models){
+        for (let model of this.models){
             model.upRow();
         }
     }
 
     increaseLevel(){
-        for (model of models){
+        for (let model of this.models){
             model.increaseLevel();
         }
     }
 
     decreaseLevel(){
-        for (model of models){
+        for (let model of this.models){
             model.decreaseLevel();
         }
     }
 
     deleteRow(){
-        for (model of models){
+        for (let model of this.models){
             model.deleteRow();
         }
     }
 
     deleteRowIfCursorAtStart(){
-        for (model of models){
+        for (let model of this.models){
             model.deleteRowIfCursorAtStart();
         }
     }
 
     nextStatus(){
-        for (model of models){
+        for (let model of this.models){
             model.nextStatus();
         }
     }
 
     moveRowDown(){
-        for (model of models){
+        for (let model of this.models){
             model.moveRowDown();
         }
     }
 
     moveRowUp(){
-        for (model of models){
+        for (let model of this.models){
             model.moveRowUp();
         }
     }
