@@ -8,32 +8,30 @@
 // automatically update themselves with the models contents
 
 
-// newRow           //
-// downRow          //
-// upRow            //
-// incLevel         //
-// decLevel         //
-// delRow           //
-// bacRow           //
-// fileNew          //
-// fileSave         //
-// fileOpen         //
-// tagIter          //
-// downRowShrt      //
-// upRowShrt        // 
-// zoomIn           // 
-// zoomOut          // 
-// moveRowDown      // 
-// moveRowUp        // 
-// showHistory      // 
-// toogleDeveloper  // 
+// newRow           // implemented
+// downRow          // implemented
+// upRow            // implemented
+// incLevel         // implemented
+// decLevel         // implemented
+// delRow           // implemented
+// bacRow           // implemented
+// fileNew          // not implemented not an action on the model
+// fileSave         // not implemented not an action on the model
+// fileOpen         // not implemented not an action on the model
+// tagIter          // implemented
+// downRowShrt      // copy of downRow
+// upRowShrt        // copy of upRow
+// zoomIn           // not implemented not an action on the model
+// zoomOut          // not implemented not an action on the model
+// moveRowDown      // implemented
+// moveRowUp        // implemented
+// showHistory      // not implemented not an action on the model
+// toogleDeveloper  // not implemented not an action on the model
 
 class Controller{
     constructor(){
         this.models = [];
-
     }
-
 
     newRow(){
         for (model of models){
@@ -42,74 +40,56 @@ class Controller{
     }
 
     downRow(){
-
+        for (model of models){
+            model.downRow();
+        }
     }
 
     upRow(){
-
+        for (model of models){
+            model.upRow();
+        }
     }
 
     incLevel(){
-
+        for (model of models){
+            model.incLevel();
+        }
     }
 
     decLevel(){
-
+        for (model of models){
+            model.decLevel();
+        }
     }
 
     delRow(){
-
+        for (model of models){
+            model.delRow();
+        }
     }
 
     bacRow(){
-
-    }
-
-    fileNew(){
-
-    }
-
-    fileSave(){
-
-    }
-
-    fileOpen(){
-
+        for (model of models){
+            model.bacRow();
+        }
     }
 
     tagIter(){
-
-    }
-
-    downRowShrt(){
-
-    }
-
-    upRowShrt(){
-
-    }
-
-    zoomIn(){
-
-    }
-
-    zoomOut(){
-
+        for (model of models){
+            model.tagIter();
+        }
     }
 
     moveRowDown(){
-
+        for (model of models){
+            model.moveRowDown();
+        }
     }
 
     moveRowUp(){
-
-    }
-
-    showHistory(){
-
-    }
-
-    toogleDeveloper(){
-
+        for (model of models){
+            model.moveRowUp();
+        }
     }
 }
