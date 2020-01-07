@@ -32,6 +32,10 @@ class Controller{
     constructor(){
         this.models = [];
     }
+    
+    addModel(model){
+        this.models.push(model);
+    }
 
     newRow(){
         for (model of models){
@@ -51,33 +55,33 @@ class Controller{
         }
     }
 
-    incLevel(){
+    increaseLevel(){
         for (model of models){
-            model.incLevel();
+            model.increaseLevel();
         }
     }
 
-    decLevel(){
+    decreaseLevel(){
         for (model of models){
-            model.decLevel();
+            model.decreaseLevel();
         }
     }
 
-    delRow(){
+    deleteRow(){
         for (model of models){
-            model.delRow();
+            model.deleteRow();
         }
     }
 
-    bacRow(){
+    deleteRowIfCursorAtStart(){
         for (model of models){
-            model.bacRow();
+            model.deleteRowIfCursorAtStart();
         }
     }
 
-    tagIter(){
+    nextStatus(){
         for (model of models){
-            model.tagIter();
+            model.nextStatus();
         }
     }
 

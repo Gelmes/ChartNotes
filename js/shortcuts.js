@@ -79,19 +79,19 @@ class Shortcuts{
         this.configureKey('newRow', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
-            ta.appendRow();
+            ta.newRow();
         });
     }
     setKey_downRow(key){            
         this.configureKey('downRow', key, function(e) {
             event.preventDefault();
-            ta.goDown();
+            ta.downRow();
         });
     }
     setKey_upRow(key){
         this.configureKey('upRow', key, function(e) {
             event.preventDefault();
-            ta.goUp();
+            ta.upRow();
         });
     }
     setKey_incLevel(key){
@@ -119,19 +119,7 @@ class Shortcuts{
     setKey_bacRow(key){
         this.configureKey('bacRow', key, function(e) {
             sh.keyPressed = 1;
-            var position = window.getSelection().getRangeAt(0).startOffset;
-            if(position == 0){
-                event.preventDefault();
-                var target = ta.getTargetRow();
-                if(ta.rows[target].level){
-                    ta.decreaseLevel();
-                } else {
-                    ta.deleteRow();
-                    if(target < ta.rows.length){
-                        ta.goUp();
-                    }
-                }   
-            }
+            ta.deleteRowIfCursorAtStart();
         });
 
     }
@@ -161,21 +149,21 @@ class Shortcuts{
         this.configureKey('tagIter', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
-            ta.setNextStatus(); // Sets the current rows tag to the next tag
+            ta.nextStatus(); // Sets the current rows tag to the next tag
         });
     }
     
     setKey_downRowShrt(key){            
         this.configureKey('downRowShrt', key, function(e) {
             event.preventDefault();
-            ta.goDown();
+            ta.downRow();
         });
     }
 
     setKey_upRowShrt(key){            
         this.configureKey('upRowShrt', key, function(e) {
             event.preventDefault();
-            ta.goUp();
+            ta.upRow();
         });
     }
 

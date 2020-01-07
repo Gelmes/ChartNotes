@@ -17,12 +17,12 @@ class TextArea{
   }
 
   initRow(){
-      this.addRowAt(this.getTargetRow());
+      this.newRowAt(this.getTargetRow());
   }
 
-  appendRow(){
+  newRow(){
       let targetRow = this.getTargetRow() + 1;
-      this.addRowAt(targetRow);
+      this.newRowAt(targetRow);
   }  
 
   deleteRow(){    
@@ -36,7 +36,15 @@ class TextArea{
     }
   }
 
-  addRowAt(index){
+  deleteRowIfCursorAtStart(){    
+    var position = window.getSelection().getRangeAt(0).startOffset;
+    if(position == 0){
+      this.deleteRow();
+      this.upRow();
+    }
+  }
+
+  newRowAt(index){
     var newLevel  = 0;
     if(index){ // If we are not row 0
       newLevel = this.rows[index-1].getLevel();
@@ -83,7 +91,7 @@ class TextArea{
     this.rows[this.getTargetRow()].setCaretToEnd();
   }
 
-  setNextStatus(){
+  nextStatus(){
     const targetRow = this.getTargetRow();
     console.log(rowStatus);
     console.log(rowStatus.keys);
@@ -134,7 +142,7 @@ class TextArea{
     }
   }
 
-  goDown(){
+  downRow(){
     this.setTargetRow(this.getTargetRow() + 1);
     try{
       this.rows[this.getTargetRow()].setCaretToEnd();
@@ -144,7 +152,7 @@ class TextArea{
     }
   }
 
-  goUp(){
+  upRow(){
     this.setTargetRow(this.getTargetRow() - 1);
     try{
       this.rows[this.getTargetRow()].setCaretToEnd();
@@ -197,7 +205,7 @@ class TextArea{
     } 
     this.reset();
     for (var i = dict["rows"].length-1; i >= 0; i--){
-      this.addRowAt(0);
+      this.newRowAt(0);
       this.rows[0].setContent(dict["rows"][i].text);
       while(this.rows[0].level < dict["rows"][i].level){
         this.rows[0].increaseLevel();

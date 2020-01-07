@@ -30,7 +30,7 @@ class TextRow{
       }
 
       // Adds the rows html code to the parents html
-      if (this.index != null){ this.addRowAt(this.index); } 
+      if (this.index != null){ this.newRowAt(this.index); } 
       else { this.parent.content.html(this.genRowHtml(this.id)); }
 
       this.content.focusin (() => {this.setAsTarget(); });
@@ -67,7 +67,7 @@ class TextRow{
     return "<div id='" + id + "' class='textrow mousetrap' contenteditable='true' style='display: none;'></div>";
   }
 
-  addRowAt(index){
+  newRowAt(index){
       if(index === 0) {
         this.parent.content.prepend(this.genRowHtml(this.id));  
         this.content =  $(this.parent.element + " #" + this.id);
