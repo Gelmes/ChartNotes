@@ -36,7 +36,7 @@ class Undo{
     deleteRow(){
     }
 
-    deleteRowIfCursorAtStart(){
+    backspaceRow(){
     }
 
     nextStatus(){

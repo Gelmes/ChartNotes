@@ -73,9 +73,9 @@ class Controller{
         }
     }
 
-    deleteRowIfCursorAtStart(){
+    backspaceRow(position){
         for (let model of this.models){
-            model.deleteRowIfCursorAtStart();
+            model.backspaceRow(position);
         }
     }
 

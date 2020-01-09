@@ -118,24 +118,11 @@ class Shortcuts{
 
     }
     setKey_bacRow(key){
-        // TODO: this implementation needs to get rid of the use of ta
-        // I tried implementing a function deleteRowIfCursorAtStart
-        // but it did not work
         this.configureKey('bacRow', key, function(e) {
+            event.preventDefault();
             sh.keyPressed = 1;
             var position = window.getSelection().getRangeAt(0).startOffset;
-            if(position == 0){
-              event.preventDefault();
-              var target = ta.getTargetRow();
-              if(ta.rows[target].level){
-                ta.decreaseLevel();
-              } else{
-                ta.deleteRow();
-                if(target < ta.rows.length){
-                    ta.upRow();
-                }
-              }
-            }
+            control.backspaceRow(position);
         });
 
     }

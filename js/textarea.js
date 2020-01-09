@@ -36,10 +36,7 @@ class TextArea{
     }
   }
 
-  // TODO: do we need this function? it was meant to be used in setKey_bacRow
-  // of the shortcuts.js file. It might not be applicable
-  deleteRowIfCursorAtStart(){    
-    var position = window.getSelection().getRangeAt(0).startOffset;
+  backspaceRow(position){
     if(position == 0){
       var target = this.getTargetRow();
       if(this.rows[target].level){
@@ -50,8 +47,9 @@ class TextArea{
           this.upRow();
         }
       }
+    } else{
+      this.rows[this.getTargetRow()].backspace(position);
     }
-    return position;
   }
 
   newRowAt(index){

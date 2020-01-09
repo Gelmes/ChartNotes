@@ -119,6 +119,14 @@ class TextRow{
     this.parent = null;
   }
 
+  backspace(position){
+    if(position){
+      let str = this.content.text();
+      this.content.text(str.slice(0, position-1) + str.slice(position));
+      this.setCaretToPos(position-1);
+    }
+  }
+
   addTab(){
     this.content.css("padding-left", (this.level * TAB_WIDTH + TAB_WIDTH_OG) + "em");
   }
