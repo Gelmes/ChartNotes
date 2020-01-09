@@ -11,9 +11,10 @@ class Undo{
             "increaseLevel":4,
             "decreaseLevel":5,
             "deleteRow":6,
-            "nextStatus":7,
-            "moveRowDown":8,
-            "moveRowUp":9
+            "backspaceRow":7,
+            "nextStatus":8,
+            "moveRowDown":9,
+            "moveRowUp":10
 
         }
     }
