@@ -1,3 +1,12 @@
+class HistoricAction{
+    constructor(actionId){
+        this.date = Date.now(); // in milliseconds since jan 1, 1970
+        this.action = actionId;
+        this.args = [];
+    }
+}
+
+
 class History{
     constructor(){
         this.historyList = [];
