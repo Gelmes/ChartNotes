@@ -35,7 +35,8 @@ class Shortcuts{
             'fileNew' : 'ctrl+n',
             'fileSave' : 'ctrl+s',
             'fileOpen' : 'ctrl+o',
-            'tagIter' : 'ctrl+t',
+            'nextStatus' : 'ctrl+t',
+            'prevStatus' : 'ctrl+shift+t',
             'downRowShrt' : 'ctrl+j',
             'upRowShrt' : 'ctrl+k',
             'zoomIn' : 'ctrl+-',
@@ -55,7 +56,8 @@ class Shortcuts{
         this.setKey_fileNew(this.shortcuts['fileNew']);
         this.setKey_fileSave(this.shortcuts['fileSave']);
         this.setKey_fileOpen(this.shortcuts['fileOpen']);
-        this.setKey_tagIter(this.shortcuts['tagIter']);
+        this.setKey_nextStatus(this.shortcuts['nextStatus']);
+        this.setKey_prevStatus(this.shortcuts['prevStatus']);
         this.setKey_downRowShrt(this.shortcuts['downRowShrt']);
         this.setKey_upRowShrt(this.shortcuts['upRowShrt']);
         this.setKey_zoomIn(this.shortcuts['zoomIn']);
@@ -71,7 +73,6 @@ class Shortcuts{
         Mousetrap.unbind(this.shortcuts[command]);
         this.shortcuts[command] = key;
         Mousetrap.bind(key, function(e) {
-            hist.record(command);
             callback();
         });
     }
@@ -148,11 +149,19 @@ class Shortcuts{
         });
     }
     
-    setKey_tagIter(key){
-        this.configureKey('tagIter', key, function(e) {
+    setKey_nextStatus(key){
+        this.configureKey('nextStatus', key, function(e) {
             sh.keyPressed = 1;
             event.preventDefault();
             control.nextStatus(); // Sets the current rows tag to the next tag
+        });
+    }
+    
+    setKey_prevStatus(key){
+        this.configureKey('prevStatus', key, function(e) {
+            sh.keyPressed = 1;
+            event.preventDefault();
+            control.prevStatus(); // Sets the current rows tag to the next tag
         });
     }
     
@@ -212,7 +221,7 @@ class Shortcuts{
 
     setKey_showHistory(key){        
         this.configureKey('showHistory', key, function(e) {
-            console.log(hist.history);
+            console.log(hist.historyList);
         });
     }
 
