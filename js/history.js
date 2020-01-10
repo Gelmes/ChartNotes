@@ -7,8 +7,11 @@ class HistoricAction{
 }
 
 
+// This history class is meant to keep track of relevant data
+// from action taken, a copy of the textArea
 class History{
-    constructor(){
+    constructor(textArea){
+        this.ta = textArea; // TextArea Model to pull relevant historic data
         this.historyList = [];
 
         // NOTE: This action list contains the ID(index) of a given action
@@ -22,38 +25,102 @@ class History{
             "deleteRow":6,
             "backspaceRow":7,
             "nextStatus":8,
-            "moveRowDown":9,
-            "moveRowUp":10
+            "prevStatus":9,
+            "moveRowDown":10,
+            "moveRowUp":11
         }
     }
 
     newRow(){
+        let action = new HistoricAction(this.actionsList['newRow']);
+        action.args = [
+            this.ta.getTargetRow()
+        ];
+        this.historyList.push(action);
     }
 
     downRow(){
+        let action = new HistoricAction(this.actionsList['downRow']);
+        action.args = [
+            this.ta.getTargetRow()
+        ];
+        this.historyList.push(action);
     }
 
     upRow(){
+        let action = new HistoricAction(this.actionsList['upRow']);
+        action.args = [
+            this.ta.getTargetRow()
+        ];
+        this.historyList.push(action);
     }
 
     increaseLevel(){
+        let action = new HistoricAction(this.actionsList['increaseLevel']);
+        let target = this.ta.getTargetRow();
+        action.args = [
+            target,
+            this.ta.rows[target].level
+        ];
+        this.historyList.push(action);
     }
 
     decreaseLevel(){
+        let action = new HistoricAction(this.actionsList['decreaseLevel']);
+        let target = this.ta.getTargetRow();
+        action.args = [
+            target,
+            this.ta.rows[target].level
+        ];
+        this.historyList.push(action);
     }
 
     deleteRow(){
+        let action = new HistoricAction(this.actionsList['deleteRow']);
+        action.args = [
+            this.ta.getTargetRow()
+        ];
+        this.historyList.push(action);
     }
 
     backspaceRow(){
+        let action = new HistoricAction(this.actionsList['backspaceRow']);
+        this.historyList.push(action);
     }
 
     nextStatus(){
+        let action = new HistoricAction(this.actionsList['nextStatus']);
+        let target = this.ta.getTargetRow();
+        action.args = [
+            target,
+            this.ta.rows[target].getStatus()
+        ];
+        this.historyList.push(action);
+    }
+
+    prevStatus(){
+        let action = new HistoricAction(this.actionsList['prevStatus']);
+        let target = this.ta.getTargetRow();
+        action.args = [
+            target,
+            this.ta.rows[target].getStatus()
+        ];
+        this.historyList.push(action);
     }
 
     moveRowDown(){
+        let action = new HistoricAction(this.actionsList['moveRowDown']);
+        action.args = [
+            this.ta.getTargetRow()
+        ];
+        this.historyList.push(action);
     }
 
     moveRowUp(){
+        let action = new HistoricAction(this.actionsList['moveRowUp']);
+        action.args = [
+            this.ta.getTargetRow()
+        ];
+        this.historyList.push(action);
     }
 }

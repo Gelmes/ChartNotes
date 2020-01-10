@@ -85,6 +85,12 @@ class Controller{
         }
     }
 
+    prevStatus(){
+        for (let model of this.models){
+            model.prevStatus();
+        }
+    }
+
     moveRowDown(){
         for (let model of this.models){
             model.moveRowDown();

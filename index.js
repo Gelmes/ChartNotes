@@ -2,10 +2,11 @@ console.log("Importing: ", "index.js");
 
 var ta = new TextArea(".TextArea");
 var control = new Controller();
+var hist = new History(ta);  // Must be added last to controller to capture actions
 control.addModel(ta);
+control.addModel(hist);     // Must be added last to capture actions
 
 var sh = new Shortcuts(ta);
-var hist = new History();
 
 // NOTE: Causes cursor to go to the end when you try to click a row and edit something in the middle of the row.
 // Clicking on empty space focuses on the current target row
