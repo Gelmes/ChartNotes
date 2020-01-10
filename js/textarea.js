@@ -101,11 +101,21 @@ class TextArea{
 
   nextStatus(){
     const targetRow = this.getTargetRow();
-    console.log(rowStatus);
-    console.log(rowStatus.keys);
     let   index = rowStatus.keys.indexOf(this.rows[targetRow].getStatus()) + 1; // Next Key
     if(index == -1){ index = 0;}                  // If the row does not have a status assigned
     if(index >= rowStatus.keys.length){ index = 0;}  // If the next index is outside of the list loop back
+    const key = rowStatus.keys[index];
+
+    this.rows[targetRow].setStatus(key);
+    this.rows[targetRow].setBackgroundColor(rowStatus.list[key].color);
+  }
+
+  prevStatus(){
+    const targetRow = this.getTargetRow();
+    let   index = rowStatus.keys.indexOf(this.rows[targetRow].getStatus());
+    if(index == -1){ index = 0;}                            // If the row does not have a status assigned
+    else if(index == 0){ index = rowStatus.keys.length-1 }  // Set to the end of the row to loop around
+    else { index = index-1 }
     const key = rowStatus.keys[index];
 
     this.rows[targetRow].setStatus(key);
