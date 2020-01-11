@@ -16,6 +16,7 @@ class History{
 
         // NOTE: This action list contains the ID(index) of a given action
         // additional actions can be added to the end of this list
+        // This is mainly meant to be a minor optimization
         this.actionsList = {
             "newRow":1,
             "downRow":2,
@@ -27,14 +28,18 @@ class History{
             "nextStatus":8,
             "prevStatus":9,
             "moveRowDown":10,
-            "moveRowUp":11
+            "moveRowUp":11,
+            "mouseClick":12,
+            "rowChange":13,
         }
+        this.rowContents = ""; // Used to determine if the focused in rows contents have changed
     }
 
     newRow(){
         let action = new HistoricAction(this.actionsList['newRow']);
         action.args = [
-            this.ta.getTargetRow()
+            this.ta.getTargetRow(),
+            this.ta.getPrevTargetRow()
         ];
         this.historyList.push(action);
     }
@@ -42,7 +47,8 @@ class History{
     downRow(){
         let action = new HistoricAction(this.actionsList['downRow']);
         action.args = [
-            this.ta.getTargetRow()
+            this.ta.getTargetRow(),
+            this.ta.getPrevTargetRow()
         ];
         this.historyList.push(action);
     }
@@ -50,7 +56,8 @@ class History{
     upRow(){
         let action = new HistoricAction(this.actionsList['upRow']);
         action.args = [
-            this.ta.getTargetRow()
+            this.ta.getTargetRow(),
+            this.ta.getPrevTargetRow()
         ];
         this.historyList.push(action);
     }
@@ -60,6 +67,7 @@ class History{
         let target = this.ta.getTargetRow();
         action.args = [
             target,
+            this.ta.getPrevTargetRow(),
             this.ta.rows[target].level
         ];
         this.historyList.push(action);
@@ -70,6 +78,7 @@ class History{
         let target = this.ta.getTargetRow();
         action.args = [
             target,
+            this.ta.getPrevTargetRow(),
             this.ta.rows[target].level
         ];
         this.historyList.push(action);
@@ -78,13 +87,18 @@ class History{
     deleteRow(){
         let action = new HistoricAction(this.actionsList['deleteRow']);
         action.args = [
-            this.ta.getTargetRow()
+            this.ta.getTargetRow(),
+            this.ta.getPrevTargetRow()
         ];
         this.historyList.push(action);
     }
 
     backspaceRow(){
         let action = new HistoricAction(this.actionsList['backspaceRow']);
+        action.args = [
+            this.ta.getTargetRow(),
+            this.ta.getPrevTargetRow(),
+        ];
         this.historyList.push(action);
     }
 
@@ -93,6 +107,7 @@ class History{
         let target = this.ta.getTargetRow();
         action.args = [
             target,
+            this.ta.getPrevTargetRow(),
             this.ta.rows[target].getStatus()
         ];
         this.historyList.push(action);
@@ -103,6 +118,7 @@ class History{
         let target = this.ta.getTargetRow();
         action.args = [
             target,
+            this.ta.getPrevTargetRow(),
             this.ta.rows[target].getStatus()
         ];
         this.historyList.push(action);
@@ -111,7 +127,8 @@ class History{
     moveRowDown(){
         let action = new HistoricAction(this.actionsList['moveRowDown']);
         action.args = [
-            this.ta.getTargetRow()
+            this.ta.getTargetRow(),
+            this.ta.getPrevTargetRow()
         ];
         this.historyList.push(action);
     }
@@ -119,7 +136,36 @@ class History{
     moveRowUp(){
         let action = new HistoricAction(this.actionsList['moveRowUp']);
         action.args = [
-            this.ta.getTargetRow()
+            this.ta.getTargetRow(),
+            this.ta.getPrevTargetRow(),
+        ];
+        this.historyList.push(action);
+    }
+
+    mouseClick(){
+        let action = new HistoricAction(this.actionsList['mouseClick']);
+        let select = window.getSelection().getRangeAt(0);
+        action.args = [
+            this.ta.getTargetRow(),
+            this.ta.getPrevTargetRow(),
+            select.startOffset,
+            select.endOffset
+        ];
+        this.historyList.push(action);
+    }
+    
+    rowChange(){
+        let latestRowContents = this.ta.rows[prevRow].content.text();
+        if(this.rowContents != latestRowContents){
+            
+        }
+        let action = new HistoricAction(this.actionsList['rowChange']);
+        let select = window.getSelection().getRangeAt(0);
+        let prevRow = this.ta.getPrevTargetRow();
+        action.args = [
+            this.ta.getTargetRow(),
+            prevRow,
+            this.ta.rows[prevRow].content.text()
         ];
         this.historyList.push(action);
     }

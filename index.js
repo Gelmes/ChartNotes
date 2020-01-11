@@ -6,6 +6,7 @@ var hist = new History(ta);  // Must be added last to controller to capture acti
 control.addModel(ta);
 control.addModel(hist);     // Must be added last to capture actions
 
+var actions = new ActionHandler(ta, hist);
 var sh = new Shortcuts(ta);
 
 // NOTE: Causes cursor to go to the end when you try to click a row and edit something in the middle of the row.

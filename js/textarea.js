@@ -7,6 +7,7 @@ class TextArea{
     this.content = $(element);
     this.rows = [];
     this.targetRowIndex = 0;
+    this.prevTargetRowIndex = 0;
     this.rowCounter = 0; // Increments every time a new row gets added,
     this.fade = 1;
     this.initRow();
@@ -91,6 +92,7 @@ class TextArea{
 
   setTargetRow(value){
     if(value < this.rows.length && value >= 0){
+      this.prevTargetRowIndex  = this.targetRowIndex;
       this.targetRowIndex = value;
     }
   }
@@ -124,6 +126,10 @@ class TextArea{
 
   getTargetRow(value){
     return this.targetRowIndex;
+  }
+
+  getPrevTargetRow(value){
+    return this.prevTargetRowIndex;
   }
 
   increaseLevel(){
@@ -182,7 +188,7 @@ class TextArea{
 
   reset(){
     this.removeAllRows();
-    this.targetRowIndex = 0;
+    this.setTargetRow(0);
     this.rowCounter = 0;
   }
 
