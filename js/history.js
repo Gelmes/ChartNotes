@@ -41,6 +41,7 @@ class History{
             this.ta.getTargetRow(),
             this.ta.getPrevTargetRow()
         ];
+        this.rowChange(); // Check for row text changes
         this.historyList.push(action);
     }
 
@@ -50,6 +51,7 @@ class History{
             this.ta.getTargetRow(),
             this.ta.getPrevTargetRow()
         ];
+        this.rowChange(); // Check for row text changes
         this.historyList.push(action);
     }
 
@@ -59,6 +61,7 @@ class History{
             this.ta.getTargetRow(),
             this.ta.getPrevTargetRow()
         ];
+        this.rowChange(); // Check for row text changes
         this.historyList.push(action);
     }
 
@@ -70,6 +73,7 @@ class History{
             this.ta.getPrevTargetRow(),
             this.ta.rows[target].level
         ];
+        this.rowChange(); // Check for row text changes
         this.historyList.push(action);
     }
 
@@ -81,6 +85,7 @@ class History{
             this.ta.getPrevTargetRow(),
             this.ta.rows[target].level
         ];
+        this.rowChange(); // Check for row text changes
         this.historyList.push(action);
     }
 
@@ -90,6 +95,7 @@ class History{
             this.ta.getTargetRow(),
             this.ta.getPrevTargetRow()
         ];
+        this.rowChange(); // Check for row text changes
         this.historyList.push(action);
     }
 
@@ -110,6 +116,7 @@ class History{
             this.ta.getPrevTargetRow(),
             this.ta.rows[target].getStatus()
         ];
+        this.rowChange(); // Check for row text changes
         this.historyList.push(action);
     }
 
@@ -121,6 +128,7 @@ class History{
             this.ta.getPrevTargetRow(),
             this.ta.rows[target].getStatus()
         ];
+        this.rowChange(); // Check for row text changes
         this.historyList.push(action);
     }
 
@@ -130,6 +138,7 @@ class History{
             this.ta.getTargetRow(),
             this.ta.getPrevTargetRow()
         ];
+        this.rowChange(); // Check for row text changes
         this.historyList.push(action);
     }
 
@@ -139,6 +148,7 @@ class History{
             this.ta.getTargetRow(),
             this.ta.getPrevTargetRow(),
         ];
+        this.rowChange(); // Check for row text changes
         this.historyList.push(action);
     }
 
@@ -151,22 +161,35 @@ class History{
             select.startOffset,
             select.endOffset
         ];
+        this.rowChange(); // Check for row text changes
         this.historyList.push(action);
     }
     
+    // BUG: CLicking through rows registers as a change fix this
+    // BUG: Moving Rows
     rowChange(){
-        let latestRowContents = this.ta.rows[prevRow].content.text();
-        if(this.rowContents != latestRowContents){
-            
-        }
-        let action = new HistoricAction(this.actionsList['rowChange']);
-        let select = window.getSelection().getRangeAt(0);
         let prevRow = this.ta.getPrevTargetRow();
-        action.args = [
-            this.ta.getTargetRow(),
-            prevRow,
-            this.ta.rows[prevRow].content.text()
-        ];
-        this.historyList.push(action);
+        let currRow = this.ta.getTargetRow();
+        let latestRowContents = this.ta.rows[prevRow].content.text();
+        console.log("Prev" + prevRow + ": " + latestRowContents);
+        console.log("Curr" + currRow + ":   " + this.rowContents);
+        // console.log(this.ta.rows[0].content.text())
+        if(this.rowContents != latestRowContents){
+            // console.log("OG: " + this.latestRowContents);
+            // console.log("AF: " + this.rowContents);
+            console.log("Change");
+        } else {
+            console.log("No change");
+        }
+        this.rowContents = this.ta.rows[currRow].content.text();
+        // let action = new HistoricAction(this.actionsList['rowChange']);
+        // let select = window.getSelection().getRangeAt(0);
+        // let prevRow = this.ta.getPrevTargetRow();
+        // action.args = [
+        //     this.ta.getTargetRow(),
+        //     prevRow,
+        //     this.ta.rows[prevRow].content.text()
+        // ];
+        // this.historyList.push(action);
     }
 }

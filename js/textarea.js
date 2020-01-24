@@ -61,8 +61,8 @@ class TextArea{
     const tr = new TextRow({parent:this, index:index, id:this.rowCounter, level:newLevel});
     this.rowCounter += 1;
     this.rows.splice(index, 0, tr);
-    this.setTargetRow(index);
-    tr.setCaretToEnd();
+    // this.setTargetRow(index);
+    tr.setCaretToEnd(); // automatically sets the targetRow
     this.content.css('margin-top','0');
   }
 
@@ -167,22 +167,25 @@ class TextArea{
   }
 
   downRow(){
-    this.setTargetRow(this.getTargetRow() + 1);
+    // this.setTargetRow(this.getTargetRow() + 1);
     try{
-      this.rows[this.getTargetRow()].setCaretToEnd();
+      this.rows[this.getTargetRow() + 1].setCaretToEnd();
     } catch (err){
+      this.setTargetRow(this.getTargetRow());
       console.log(err);
-      this.setTargetRow(this.getTargetRow() - 1);
+      // throw err;
+      // this.setTargetRow(this.getTargetRow() - 1);
     }
   }
 
   upRow(){
-    this.setTargetRow(this.getTargetRow() - 1);
+    // this.setTargetRow(this.getTargetRow() - 1);
     try{
-      this.rows[this.getTargetRow()].setCaretToEnd();
+      this.rows[this.getTargetRow() - 1].setCaretToEnd();
     } catch (err){
+      this.setTargetRow(this.getTargetRow());
       console.log(err);
-      this.setTargetRow(this.getTargetRow() + 1);
+      // this.setTargetRow(this.getTargetRow() + 1);
     }
   }
 

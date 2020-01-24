@@ -6,8 +6,9 @@ class ActionHandler{
         this.ta = textArea;
         this.hist = history;
         // this.ta.content.click(() => { this.focusChange(); });
-        this.ta.content.mousedown(() => { this.mouseDown(); });
-        this.ta.content.mouseup  (() => { this.mouseUp();   });
+        this.ta.content.click(() => { this.mouseDown(); });
+        // this.ta.content.mousedown(() => { this.mouseDown(); });
+        // this.ta.content.mouseup  (() => { this.mouseUp();   });
     }
 
     focusChange(){

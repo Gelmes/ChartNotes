@@ -33,7 +33,7 @@ class TextRow{
       if (this.index != null){ this.newRowAt(this.index); } 
       else { this.parent.content.html(this.genRowHtml(this.id)); }
 
-      this.content.focusin (() => {});
+      this.content.focusin (() => { this.setAsTarget(); });
       this.content.focusout(() => {});
 
       // Set tabs according to set level
