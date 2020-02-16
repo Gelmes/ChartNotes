@@ -80,7 +80,7 @@ class TextArea{
 
   moveRowDown(){
     let targetRow = this.getTargetRow();
-    if(targetRow != this.rows.length){
+    if(targetRow != this.rows.length - 1){
       let row = this.rows[targetRow];
       row.content.next().insertBefore(row.content);
       let nextRow = this.rows[targetRow + 1];
