@@ -134,11 +134,14 @@ class History{
 
     moveRowDown(){
         let action = new HistoricAction(this.actionsList['moveRowDown']);
+        console.log("Targets", this.ta.getTargetRow(), this.ta.getPrevTargetRow() );
         action.args = [
             this.ta.getTargetRow(),
-            this.ta.getPrevTargetRow()
+            this.ta.getPrevTargetRow(),
+            this.ta.rows[this.ta.getTargetRow()].content.text(),
+            this.ta.rows[this.ta.getPrevTargetRow()].content.text()
         ];
-        this.rowChange(); // Check for row text changes
+        // this.rowChange(); // We will not check row change here since we are expecting it
         this.historyList.push(action);
     }
 
@@ -147,8 +150,10 @@ class History{
         action.args = [
             this.ta.getTargetRow(),
             this.ta.getPrevTargetRow(),
+            this.ta.rows[this.ta.getTargetRow()].content.text(),
+            this.ta.rows[this.ta.getPrevTargetRow()].content.text()
         ];
-        this.rowChange(); // Check for row text changes
+        // this.rowChange(); // We will not check row change here since we are expecting it
         this.historyList.push(action);
     }
 
@@ -171,15 +176,15 @@ class History{
         let prevRow = this.ta.getPrevTargetRow();
         let currRow = this.ta.getTargetRow();
         let latestRowContents = this.ta.rows[prevRow].content.text();
-        console.log("Prev" + prevRow + ": " + latestRowContents);
-        console.log("Curr" + currRow + ":   " + this.rowContents);
+        console.log("Prev" + prevRow + ": " + latestRowContents); //DELETE:
+        console.log("Curr" + currRow + ":   " + this.rowContents); //DELETE:
         // console.log(this.ta.rows[0].content.text())
         if(this.rowContents != latestRowContents){
             // console.log("OG: " + this.latestRowContents);
             // console.log("AF: " + this.rowContents);
-            console.log("Change");
+            console.log("Change on row " + prevRow);
         } else {
-            console.log("No change");
+            // console.log("No change");
         }
         this.rowContents = this.ta.rows[currRow].content.text();
         // let action = new HistoricAction(this.actionsList['rowChange']);
