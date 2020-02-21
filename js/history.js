@@ -123,21 +123,11 @@ class History{
     }
 
     deleteRow(){
-        // let action = new HistoricAction(enumActionList['deleteRow']);
-        // action.args = [
-        //     this.ta.getTargetRow(),
-        //     this.ta.getPrevTargetRow()
-        // ];
-        // this.rowChange(); // Check for row text changes
-        // this.historyList.push(action);
+        // Handled in preHistory class due to the need to remember the rows contents
     }
 
     backspaceRow(){
-        let action = new HistoricAction(enumActionList['backspaceRow']);
-        action.tg = this.ta.getTargetRow();
-        action.ptg = this.ta.getPrevTargetRow();
-        action.v1 = this.ta.getLevel();
-        this.historyList.push(action);
+        // Handled in preHistory class due to the need to remember the rows contents
     }
 
     nextStatus(){
@@ -263,6 +253,15 @@ class PreHistory{
     }
 
     backspaceRow(){
+        let action = new HistoricAction(enumActionList['backspaceRow']);
+        action.tg = this.ta.getTargetRow();
+        action.ptg = this.ta.getPrevTargetRow();
+        action.v1 = this.ta.getLevel();
+        action.v2 = window.getSelection().getRangeAt(0).endOffset;
+        action.c = this.ta.getRowContent();
+        // this.ta.setTargetRow(action.tg); // Only useful if I use rowChange()
+        // this.rowChange();                // We are already tracking the row change
+        this.historyList.push(action);
     }
 
     nextStatus(){

@@ -45,12 +45,11 @@ class Revert{
             case enumActionList.increaseLevel   : this.decreaseLevel(action); break;
             case enumActionList.decreaseLevel   : this.increaseLevel(action); break;
             case enumActionList.deleteRow       : this.newRow(action)   ; break;
-            case enumActionList.backspaceRow    : break;
-            case enumActionList.nextStatus      : break;
-            case enumActionList.prevStatus      : break;
-            case enumActionList.moveRowDown     : break;
-            case enumActionList.moveRowUp       : break;
-            case enumActionList.moveRowUp       : break;
+            case enumActionList.backspaceRow    : this.backspaceRow(action); break;
+            case enumActionList.nextStatus      : this.prevStatus(action); break;
+            case enumActionList.prevStatus      : this.nextStatus(action); break;
+            case enumActionList.moveRowDown     : this.moveRowUp(action); break;
+            case enumActionList.moveRowUp       : this.moveRowDown(action); break;
             case enumActionList.mouseClick      : this.mouseClick(action); break;
             case enumActionList.rowChange       : this.rowChange(action); break;
             default: break;
@@ -90,12 +89,35 @@ class Revert{
         this.ta.setTargetRow(action.tg);
         this.ta.deleteRow();
     }
-    // backspaceRow(position){ this.redoList = [];}
-    // nextStatus(){           this.redoList = [];}
-    // prevStatus(){           this.redoList = [];}
-    // moveRowDown(){          this.redoList = [];}
-    // moveRowUp(){            this.redoList = [];}
+    backspaceRow(action){
+        console.log("backspaceRow", action.tg);
+        this.ta.setTargetRow(action.tg);
+        this.ta.setRowContent(action.c);
+        this.ta.setCaretToPos(action.v2);
+    }
+    nextStatus(action){
+        console.log("nextStatus", action.tg);
+        this.ta.setTargetRow(action.tg);
+        this.ta.nextStatus();
+
+    }
+    prevStatus(action){
+        console.log("prevStatus", action.tg);
+        this.ta.setTargetRow(action.tg);
+        this.ta.prevStatus();
+    }
+    moveRowDown(action){
+        console.log("moveRowDown", action.tg);
+        this.ta.setTargetRow(action.tg);
+        this.ta.moveRowDown();        
+    }
+    moveRowUp(action){
+        console.log("moveRowUp", action.tg);
+        this.ta.setTargetRow(action.tg);
+        this.ta.moveRowUp();  
+    }
     mouseClick(action){
+        // TODO: Improove so that it actually does a selection
         console.log("mouseClick", action.tg);
         this.ta.setTargetRow(action.ptg);
         this.ta.setCaretToEnd();

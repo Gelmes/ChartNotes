@@ -109,6 +109,10 @@ class TextArea{
     }
   }
 
+  setCaretToPos(pos){
+    this.rows[this.getTargetRow()].setCaretToPos(pos);
+  }
+
   setCaretToEnd(){
     this.rows[this.getTargetRow()].setCaretToEnd();
   }
