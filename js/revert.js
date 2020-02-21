@@ -51,7 +51,7 @@ class Revert{
             case enumActionList.moveRowDown     : break;
             case enumActionList.moveRowUp       : break;
             case enumActionList.moveRowUp       : break;
-            case enumActionList.mouseClick      : break;
+            case enumActionList.mouseClick      : this.mouseClick(action); break;
             case enumActionList.rowChange       : this.rowChange(action); break;
             default: break;
         }
@@ -95,7 +95,11 @@ class Revert{
     // prevStatus(){           this.redoList = [];}
     // moveRowDown(){          this.redoList = [];}
     // moveRowUp(){            this.redoList = [];}
-    // mouseClick(){}
+    mouseClick(action){
+        console.log("mouseClick", action.tg);
+        this.ta.setTargetRow(action.ptg);
+        this.ta.setCaretToEnd();
+    }
     rowChange(action){
         console.log("rowChange");
         this.ta.setTargetRow(action.tg);
