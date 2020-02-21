@@ -17,6 +17,18 @@ class TextArea{
     this.content.html(str);
   }
 
+  getRowContent(){
+    return this.getRowContentIndex(this.getTargetRow());
+  }
+
+  getRowContentIndex(row){
+    return this.rows[row].getContent();
+  }
+
+  setRowContent(str){
+    this.rows[this.getTargetRow()].setContent(str);
+  }
+
   initRow(){
       this.newRowAt(this.getTargetRow());
   }
@@ -124,7 +136,11 @@ class TextArea{
     this.rows[targetRow].setBackgroundColor(rowStatus.list[key].color);
   }
 
-  getTargetRow(value){
+  getStatus(){
+    return this.rows[this.getTargetRow()].getStatus();
+  }
+
+  getTargetRow(){
     return this.targetRowIndex;
   }
 
@@ -145,6 +161,7 @@ class TextArea{
         this.rows[targetRow].increaseLevel();
       }
     }
+    this.setTargetRow(this.getTargetRow());
   }
 
   decreaseLevel(){
@@ -164,6 +181,11 @@ class TextArea{
       }
       this.rows[targetRow].decreaseLevel();
     }
+    this.setTargetRow(this.getTargetRow());
+  }
+
+  getLevel(){
+    return this.rows[this.getTargetRow()].getLevel();
   }
 
   downRow(){

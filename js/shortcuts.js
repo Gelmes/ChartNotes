@@ -44,7 +44,8 @@ class Shortcuts{
             'moveRowDown' : 'alt+down',
             'moveRowUp' : 'alt+up',
             'showHistory' : 'ctrl+h',
-            'toogleDeveloper' : 'ctrl+d'
+            'toogleDeveloper' : 'ctrl+d',
+            'undo': 'ctrl+z'
         }
         this.setKey_newRow(this.shortcuts['newRow']);
         this.setKey_downRow(this.shortcuts['downRow']);
@@ -66,6 +67,7 @@ class Shortcuts{
         this.setKey_moveRowUp(this.shortcuts['moveRowUp']);
         this.setKey_showHistory(this.shortcuts['showHistory']);
         this.setKey_toogleDeveloper(this.shortcuts['toogleDeveloper']);
+        this.setKey_undo(this.shortcuts['undo']);
     }
     
     // This is a common code that sets up mousetrap keyboard shortcuts
@@ -228,6 +230,13 @@ class Shortcuts{
     setKey_toogleDeveloper(key){        
         this.configureKey('toogleDeveloper', key, function(e) {
             require('electron').remote.getCurrentWindow().toggleDevTools();
+        });
+    }
+
+    setKey_undo(key){        
+        this.configureKey('undo', key, function(e) {            
+            event.preventDefault();
+            undo.undo();
         });
     }
 

@@ -50,6 +50,10 @@ class TextRow{
     this.content.html(str);
   }
 
+  getContent(){
+    return this.content.html();
+  }
+
   reset(){
     this.setContent("");
     this.level = 0;    
