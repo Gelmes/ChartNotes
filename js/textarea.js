@@ -103,7 +103,7 @@ class TextArea{
   }
 
   setTargetRow(value){
-    if(value < this.rows.length && value >= 0){
+    if((value < this.rows.length && value >= 0) || value == 0){
       this.prevTargetRowIndex  = this.targetRowIndex;
       this.targetRowIndex = value;
     }
