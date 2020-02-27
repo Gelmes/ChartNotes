@@ -126,8 +126,19 @@ class TextRow{
   backspace(position){
     if(position){
       let str = this.content.text();
-      this.content.text(str.slice(0, position-1) + str.slice(position));
-      this.setCaretToPos(position-1);
+      
+      let start = window.getSelection().getRangeAt(0).startOffset;
+      let end   = window.getSelection().getRangeAt(0).endOffset;
+      if(start==end){
+        str = str.slice(0, start-1) + str.slice(start);
+        this.content.text(str);
+        this.setCaretToPos(start-1);
+      } else {
+        str = str.slice(0, start) + str.slice(end);
+        this.content.text(str);
+        this.setCaretToPos(start);
+      }
+      
     }
   }
 
