@@ -9,6 +9,7 @@
     "test": "jest --watch --collect-coverage",
     "pack": "electron-builder --dir",
     "dist": "electron-builder --win",
+    "linux": "electron-builder --linux",
     "distWin": "electron-builder --win --publish never"
   },
   "keywords": [],
@@ -52,6 +53,9 @@
     },
     "mac": {
       "category": "your.app.category.type"
+    },
+    "linux":{
+      "target": "deb"
     }
   }
 }
