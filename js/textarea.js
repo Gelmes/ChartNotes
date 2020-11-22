@@ -67,7 +67,10 @@ class TextArea{
 
   newRowAt(index){
     var newLevel  = 0;
-    if(index){ // If we are not row 0
+    if(index < this.rows.length -1){
+      newLevel = this.rows[index+1].getLevel();
+    }
+    else if(index){ // If we are not row 0
       newLevel = this.rows[index-1].getLevel();
     }
     const tr = new TextRow({parent:this, index:index, id:this.rowCounter, level:newLevel});

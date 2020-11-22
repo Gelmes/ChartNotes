@@ -54,7 +54,7 @@
     "mac": {
       "category": "your.app.category.type"
     },
-    "linux":{
+    "linux": {
       "target": "deb"
     }
   }
