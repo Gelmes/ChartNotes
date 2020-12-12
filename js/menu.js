@@ -76,11 +76,21 @@ function openFile(fileName){
     try {
         if(fileName){
             var data = fs.readFileSync(fileName);
-            var dict = JSON.parse(data);            
-            setTimeout(function() {
-                ta.set(dict["textArea"]);
-                hist.set(dict["history"]);
-            }, 250);
+            var dict = JSON.parse(data);   
+            if(!("version" in dict))
+            {
+                setTimeout(function() {
+                    ta.set(dict);
+                }, 250);
+            }     
+            else
+            {
+                setTimeout(function() {
+                    ta.set(dict["textArea"]);
+                    hist.set(dict["history"]);
+                }, 250);
+            }    
+
             WORKING_FILE = fileName;
             $('title').html(path.basename(WORKING_FILE));
             clearFileChanges();
