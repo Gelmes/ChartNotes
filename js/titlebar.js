@@ -14,9 +14,21 @@ function menuMin(){
      window.minimize(); 
 }
 
+let maxstate = 0;
 function menuMax(){
-     var window = BrowserWindow.getFocusedWindow(); 
-     window.maximize(); 
+     var window = BrowserWindow.getFocusedWindow();
+     if(maxstate == 0)
+     {
+          console.log("maximize");
+          window.maximize(); 
+          maxstate = 1;
+     }
+     else
+     {
+          console.log("unmaximize");
+          window.unmaximize();
+          maxstate = 0;
+     }
 }
 
 (function () {
