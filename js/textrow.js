@@ -192,7 +192,7 @@ class TextRow{
 
   get(){
     var dict = {};
-    // this.praent will be an exception since it will create a cyclic list
+    // this.parent will be an exception since it will create a cyclic list
     // we will later add it in the set method
     var except = ["parent","content"];
     for (var name in this){

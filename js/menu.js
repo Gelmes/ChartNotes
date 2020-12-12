@@ -18,20 +18,26 @@ function saveToFile(fileName){
     if(ext == ''){
         fileName += '.chn';
     }
-    var dict = {};
-    dict = ta.get();
-    var ditc_obj = {};
+
+    var taDict = ta.get();
+    var dict_obj = {};
     // NOTE: Kind of dumb I have to do this
     // But copying the dictionary content
     // to this other dictionary converts it to an object
     // this allows it to work with JSON.stringify()
     // Not a big performence hit so no problem
-    for (var key in dict){
-        ditc_obj[key] = dict[key];
+    for (var key in taDict){
+        dict_obj[key] = taDict[key];
     }
+
+    var dict = {
+        "version": 1,
+        "textArea": dict_obj,
+        "history": hist.get()
+    };
     
     // console.log(dict);
-    var content = JSON.stringify(ditc_obj, null, 4);
+    var content = JSON.stringify(dict, null, 4);
     try { fs.writeFileSync(fileName, content, 'utf-8'); }
     catch(e) { 
         console.log('Failed to save the file !'); 
@@ -72,7 +78,8 @@ function openFile(fileName){
             var data = fs.readFileSync(fileName);
             var dict = JSON.parse(data);            
             setTimeout(function() {
-                ta.set(dict);
+                ta.set(dict["textArea"]);
+                hist.set(dict["history"]);
             }, 250);
             WORKING_FILE = fileName;
             $('title').html(path.basename(WORKING_FILE));

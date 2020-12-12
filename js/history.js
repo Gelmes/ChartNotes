@@ -71,9 +71,20 @@ class History{
         this.rowContents = ""; // Used to determine if the focused in rows contents have changed
     }
 
+    get(){
+        var dict = {};
+        dict["historyList"] = this.historyList;
+        return dict;
+    }
+
+    set(dict){
+        this.historyList = dict["historyList"];
+    }
+
     pop(){
         return this.historyList.pop();
     }
+
     push(action){
         // Must push of type HistoricAction
         this.historyList.push(action);

@@ -37,13 +37,18 @@ Work Breakdown
     
 
 Features
-    Text Editor
+    Text Editor DONE
     Flow chart
     Editable Shortcuts
-    Undo
-    Redo
+    Undo DONE
+    Redo DONE
     Save Json format
     Save Plane Text
     Style editor
+    Emoji
+    Save History
+        Add a version value so that we know how to parse old files
+        Switch save so that it saves the text area inside a dictionary
+    History slider
 
 
